@@ -41,7 +41,7 @@ app.use('/', function(req, res, next)
 	next();
 });
 
-app.use("/", express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'public')));
 
 app.get('/:det', function(req,res)
 {
@@ -52,6 +52,7 @@ app.get('/:det', function(req,res)
 		if (det == "manageServer") res.sendFile(__dirname + "/public/manageServer.html");
 		else if (det == "home") res.sendFile(__dirname + "/public/index.html");
 		else if (det == "sitemap") res.sendFile(__dirname + "/sitemap.html");
+		else if (det == "myarea") res.sendFile(__dirname + "/public/myarea.html");
 		else if (det == "utility") res.sendFile(__dirname + "/public/index.html");
 		else res.status(404).send("Opss! Pagina errata o accesso non consentito.");
 	}
@@ -59,6 +60,19 @@ app.get('/:det', function(req,res)
 	{
 		res.status(404).send("Opss! Pagina errata o accesso non consentito.");
 	}
+});
+
+app.post('/form_articolo', function(req, res)
+{
+	const titolo = req.body.titolo;
+    const allegati = req.files;
+	const timestampInt = parseInt(Date.now());
+	timestampInt = currentTimestamp.toString();
+    allegati.forEach(file =>
+	{
+        const filePath = path.join(__dirname, 'articoli/'+timestampInt, file.filename.replace(' ',''));
+        fs.rename(file.path, filePath);
+    });
 });
 
 app.post('/requests', function(req,res)
