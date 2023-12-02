@@ -26,6 +26,7 @@ app.use("/video", express.static(path.join(__dirname, 'video')));
 app.use("/js", express.static(path.join(__dirname, 'js')));
 app.use("/img", express.static(path.join(__dirname, 'immagini')));
 app.use("/css", express.static(path.join(__dirname, 'css')));
+app.use("/utility", express.static(path.join(__dirname, 'utility')));
 
 const server = https.createServer(options, app);
 //dbconn.connect();
@@ -42,12 +43,6 @@ app.use('/', function(req, res, next)
 
 app.use("/", express.static(path.join(__dirname, 'public')));
 
-//app.get('/', function(req,res)
-//{
-	//res.sendFile(__dirname + "/public/index.html");
-	//res.redirect('https://' + req.headers.host + "/home");
-//});
-
 app.get('/:det', function(req,res)
 {
 	var det = req.params.det;
@@ -57,39 +52,12 @@ app.get('/:det', function(req,res)
 		if (det == "manageServer") res.sendFile(__dirname + "/public/manageServer.html");
 		else if (det == "home") res.sendFile(__dirname + "/public/index.html");
 		else if (det == "sitemap") res.sendFile(__dirname + "/sitemap.html");
+		else if (det == "utility") res.sendFile(__dirname + "/public/index.html");
 		else res.status(404).send("Opss! Pagina errata o accesso non consentito.");
 	}
 	else
 	{
 		res.status(404).send("Opss! Pagina errata o accesso non consentito.");
-	}
-});
-
-app.post('/cookieRequest', function(req,res)
-{
-	var data = req.body;
-	var sql = "insert into preferencesCookie(publicIP, detail) values(?,?)";
-	dbconn.query(sql,[data.ipaddr,data.pref]);
-	res.send("ok");
-});
-
-app.post('/session', function(req,res)
-{
-	if(req.session.lang == undefined)
-	{ 
-		req.session.lang = "it-it";
-	}
-	
-	// req=checkLangSession(req);
-	var cod = req.body.code;
-	if (cod == 1)
-	{
-		res.send(req.session.lang);
-	}
-	if (cod == 2)
-	{
-		req.session.lang = req.body.lang;
-		res.send("ok");
 	}
 });
 
