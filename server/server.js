@@ -9,11 +9,12 @@ const path = require('path');
 const mysql = require('mysql');
 const fs = require("fs");
 const http = express();
+const { exec } = require('child_process');
 const bodyParser = require('body-parser');
 const portHTTP = process.env.PORT || "80";
 const portHTTPS = process.env.PORT || "443";
 const options = {key: fs.readFileSync("/etc/letsencrypt/live/italiadelfuturo.it/privkey.pem"), cert:fs.readFileSync("/etc/letsencrypt/live/italiadelfuturo.it/fullchain.pem")};
-//const dbconn = mysql.createConnection({host : 'localhost', user : 'root', password : 'Matisse2022', database : 'farnesecaffe'});
+const dbconn = mysql.createConnection({host : 'localhost', user : 'root', password : 'Idfdn2023', database : 'idf'});
 const mailconn = nodemailer.createTransport({host: "smtps.aruba.it", auth: {user: 'noreply@italiadelfuturo.it', pass: 'Idfdn2023'}, port: 465});
 const domains = ["italiadelfuturo.it"];
 //const redisclient = redis.createClient();
@@ -29,7 +30,7 @@ app.use("/css", express.static(path.join(__dirname, 'css')));
 app.use("/utility", express.static(path.join(__dirname, 'utility')));
 
 const server = https.createServer(options, app);
-//dbconn.connect();
+dbconn.connect();
 
 //---------------------------------------------------------------------------------------------------------------
 
@@ -64,15 +65,29 @@ app.get('/:det', function(req,res)
 
 app.post('/form_articolo', function(req, res)
 {
-	const titolo = req.body.titolo;
-    const allegati = req.files;
-	const timestampInt = parseInt(Date.now());
+	var titolo = req.body.titolo;
+    var allegati = req.files;
+	var timestampInt = parseInt(Date.now());
 	timestampInt = currentTimestamp.toString();
-    allegati.forEach(file =>
+	
+	var nomeFileArticolo
+    for (var file in allegati)
 	{
-        const filePath = path.join(__dirname, 'articoli/'+timestampInt, file.filename.replace(' ',''));
+		var extension = path.extname(file.filename).toLowerCase();
+		if (extension == '.doc' || extension == '.docx')
+		{
+			
+		}
+        var filePath = path.join(__dirname, 'articoli/'+timestampInt+'/', file.filename.replace(' ',''));
         fs.rename(file.path, filePath);
-    });
+    }
+	
+	//exec('cat *.js bad_file | wc -l');
+	
+	//var query = "INSERT INTO articoli(titolo, cartella) VALUES(?, ?)";
+	//dbconn.query(query, [titolo, timestampInt]); //posso inserire anche l'html dell'articolo nel db
+	
+	res.send("Articolo salvato correttamente!");
 });
 
 app.post('/requests', function(req,res)
