@@ -68,7 +68,7 @@ app.post('/form_articolo', function(req, res)
 	var titolo = req.body.titolo;
     var allegati = req.files;
 	var timestampInt = parseInt(Date.now());
-	timestampInt = currentTimestamp.toString();
+	timestampInt = timestampInt.toString();
 	
 	var nomeFileArticolo
     for (var file in allegati)
