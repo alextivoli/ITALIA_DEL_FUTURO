@@ -67,7 +67,7 @@ app.get('/:det', function(req,res)
 	}
 });
 
-app.post('/form_articolo', upload.single('allegati'), function(req, res)
+app.post('/form_articolo', upload.array('allegati'), function(req, res)
 {
 	var titolo = req.body.titolo;
     //var allegati = req.files;
