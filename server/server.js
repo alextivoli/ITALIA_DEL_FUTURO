@@ -83,27 +83,20 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 		destPath = path.join(dest, file);
 		fs.renameSync(origPath, destPath);
 	});
-    //var allegati = req.files;
-	//var timestampInt = parseInt(Date.now());
-	//timestampInt = timestampInt.toString();
 	
-	/*var nomeFileArticolo
-    for (var file in allegati)
+	
+	rudeList = fs.readdirSync(dest);
+	const fileDoc = rudeList.filter(file =>
 	{
-		var extension = path.extname(file.filename).toLowerCase();
-		if (extension == '.doc' || extension == '.docx')
-		{
-			
-		}
-        var filePath = path.join(__dirname, 'articoli/'+timestampInt+'/', file.filename.replace(' ',''));
-        fs.rename(file.path, filePath);
-    }*/
+		var ext = path.extname(file).toLowerCase();
+		return ext === '.doc' || ext === '.docx';
+	});
 	
-	//exec('cat *.js bad_file | wc -l');
 	
-	//var query = "INSERT INTO articoli(titolo, cartella) VALUES(?, ?)";
-	//dbconn.query(query, [titolo, timestampInt]); //posso inserire anche l'html dell'articolo nel db
-	
+	var command = 'python3 ./utility/wordTohtml.py ' + dest + fileDoc[0] + ' ' + dest + 'page.html'
+	exec(command);
+	var query = "INSERT INTO articoli(titolo, cartella) VALUES(?, ?)";
+	dbconn.query(query, [titolo, nameFold]); //posso inserire anche l'html dell'articolo nel db
 	res.send("Articolo salvato correttamente!");
 });
 
