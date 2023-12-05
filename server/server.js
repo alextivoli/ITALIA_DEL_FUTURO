@@ -16,7 +16,8 @@ const portHTTP = process.env.PORT || "80";
 const portHTTPS = process.env.PORT || "443";
 const options = {key: fs.readFileSync("/etc/letsencrypt/live/italiadelfuturo.it/privkey.pem"), cert:fs.readFileSync("/etc/letsencrypt/live/italiadelfuturo.it/fullchain.pem")};
 const dbconn = mysql.createConnection({host : 'localhost', user : 'root', password : 'Idfdn2023', database : 'idf'});
-const storage = multer.diskStorage({destination: (req, file, cb) => {const percorso = "./articoli/" + parseInt(Date.now()).toString() + "/"; fs.mkdirSync(percorso,{recursive:true}); cb(null, percorso);},filename: (req, file, cb) => {cb(null, file.originalname);}});
+//const storage = multer.diskStorage({destination: (req, file, cb) => {const percorso = "./articoli/" + parseInt(Date.now()).toString() + "/"; fs.mkdirSync(percorso,{recursive:true}); cb(null, percorso);},filename: (req, file, cb) => {cb(null, file.originalname);}});
+const storage = multer.diskStorage({destination: (req, file, cb) => {const percorso = "./articoli/"; cb(null, percorso);},filename: (req, file, cb) => {cb(null, "0_"+file.originalname);}});
 const mailconn = nodemailer.createTransport({host: "smtps.aruba.it", auth: {user: 'noreply@italiadelfuturo.it', pass: 'Idfdn2023'}, port: 465});
 const domains = ["italiadelfuturo.it"];
 //const redisclient = redis.createClient();
@@ -70,6 +71,17 @@ app.get('/:det', function(req,res)
 app.post('/form_articolo', upload.array('allegati'), function(req, res)
 {
 	var titolo = req.body.titolo;
+	const orig = './articoli/';
+	var nameFold = parseInt(Date.now()).toString();
+	const dest = '.articoli/' + nameFold + '/';
+	
+	const files = fs.readdirSync(orig);
+	files.forEach(file => 
+	{
+		origPath = path.join(orig, file);
+		destPath = path.join(dest, file);
+		fs.renameSync(origPath, destPath);
+	});
     //var allegati = req.files;
 	//var timestampInt = parseInt(Date.now());
 	//timestampInt = timestampInt.toString();
