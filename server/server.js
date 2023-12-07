@@ -93,7 +93,7 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 	});
 	
 	
-	var command = 'python3 ./utility/wordTohtml.py ' + dest + fileDoc[0] + ' ' + dest + 'page.html'
+	var command = 'python3 ./utility/wordTohtml.py ' + dest + fileDoc[0] + ' ' + dest + 'page.txt'
 	exec(command);
 	var query = "INSERT INTO articoli(titolo, cartella) VALUES(?, ?)";
 	dbconn.query(query, [titolo, nameFold]); //posso inserire anche l'html dell'articolo nel db
