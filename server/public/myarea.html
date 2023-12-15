@@ -51,7 +51,7 @@
 
     <h2>Inserisci nuovo articolo</h2>
 
-    <form action="/form_articolo" id="creaArticolo" method="post" enctype="multipart/form-data" onsubmit="validateForm">
+    <form action="/form_articolo" id="creaArticolo" method="post" enctype="multipart/form-data">
         <label for="titolo">Titolo articolo:</label>
         <input type="text" id="titolo" name="titolo" required>
         <br>
@@ -59,7 +59,7 @@
         <input type="file" id="allegati" name="allegati" accept=".doc, .docx, .jpg, .png, .jpeg" multiple>
 		<span class="error" id="fileError"></span>
         <br>
-        <input type="submit" value="Invia">
+        <input type="button" onclick="validateForm()" value="Invia">
     </form>
 </body>
 </html>
