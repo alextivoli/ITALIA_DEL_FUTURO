@@ -97,7 +97,7 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 	exec(command);
 	var query = "INSERT INTO articoli(titolo, cartella) VALUES(?, ?)";
 	dbconn.query(query, [titolo, nameFold]); //posso inserire anche l'html dell'articolo nel db
-	res.send("Articolo salvato correttamente!");
+	res.status(200).end("Articolo salvato correttamente!");
 });
 
 app.post('/requests', function(req,res)

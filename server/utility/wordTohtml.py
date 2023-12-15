@@ -20,6 +20,6 @@ import sys
 ##
 ##    convert_docx_to_html(input_docx_file, output_html_file)
 def main():
-    output = pypandoc.convert_file(sys.argv[1], 'html5', outputfile=sys.argv[2])
+    output = pypandoc.convert_file(sys.argv[1], 'html', outputfile=sys.argv[2])
 if __name__ == "__main__":
     main()
