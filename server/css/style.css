@@ -88,6 +88,13 @@
   }
 }
 
+.logo {
+  width:20%; 
+  height: 20%;
+  object-fit: contain;
+  position: center;
+}
+
 
 
 
@@ -673,12 +680,7 @@ background-size: contain; */
   height: auto;
 }
 
-.logo-farnese-caffe {
-    width:25%; 
-    height: 25%;
-    object-fit: contain;
-    position: center;
-  }
+
 
 .logo-one-love{
   width: 20%;
@@ -1570,7 +1572,7 @@ display: none;
 
 
   .logo-index{margin-top: 10vh; max-width:60vw; height: 40%;}
-
+  .logo{width: 5vw; height: 5vh; scale: 3;}
 
 
 
@@ -1716,7 +1718,7 @@ display: none;
   }
   
 
-  .logo-farnese-caffe{width: 5vw; height: 5vh; scale: 3;}
+
 
 
   .logo-farnese-one_love{margin-top: 15vh;
