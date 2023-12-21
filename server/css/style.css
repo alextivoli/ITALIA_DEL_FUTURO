@@ -56,8 +56,16 @@
 .hero--small{height: 450px;text-align: center;}
 
 
+/* ! Logo */
 
-
+.logo-index {
+  margin-top: 20vh;
+  margin-top: 30vh;
+  max-width:30vw; 
+  height: 30%;
+  object-fit: contain;
+  position: absolute;
+}
 
 
 
@@ -659,14 +667,6 @@ background-size: contain; */
   scale: 3;
 }
 
-.logo-farnese-caffe_index {
-  margin-top: 20vh;
-  margin-top: 10vh;
-  max-width:30vw; 
-  height: 30%;
-  object-fit: contain;
-  position: absolute;
-}
 
 .logo-sm_index {
   margin-top: 30vh;
@@ -1548,6 +1548,25 @@ display: none;
   .h-c{display: none;}
 
 
+  .logo-index{margin-top: 10vh; max-width:60vw; height: 40%;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1677,7 +1696,7 @@ display: none;
   
 
   .logo-farnese-caffe{width: 5vw; height: 5vh; scale: 3;}
-  .logo-farnese-caffe_index{margin-top: 10vh; max-width:60vw; height: 40%;}
+
 
   .logo-farnese-one_love{margin-top: 15vh;
   }
