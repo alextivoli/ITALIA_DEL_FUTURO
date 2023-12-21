@@ -1,6 +1,14 @@
 
 /* ! Navbar */
 
+.nav-home{
+  background-color: #fff8e7; 
+}
+
+.navbar a:hover {
+  color: #ff4081; 
+}
+
 .navbar-brand{
   font-family: 'EB Garamond', serif;
   text-align: center;
@@ -19,6 +27,7 @@
 }
 
 .navbar-toggler{display: none;}
+
 
 
 
