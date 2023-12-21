@@ -4,7 +4,7 @@
 .navbar-brand{
   font-family: 'EB Garamond', serif;
   text-align: center;
-  color: #c0c0c0;
+  color: #000;
   width: 10vw;
   
 }
@@ -17,6 +17,8 @@
   width: 20vw;
   
 }
+
+.navbar-toggler{display: none;}
 
 
 
@@ -693,7 +695,7 @@ background-size: contain; */
 
 
 
-.navbar-toggler{display: none;}
+
 
 .hamburger {
   position: fixed;
