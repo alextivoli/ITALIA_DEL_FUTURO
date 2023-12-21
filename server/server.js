@@ -57,6 +57,7 @@ app.get('/:det', function(req,res)
     	{
 		if (det == "manageServer") res.sendFile(__dirname + "/public/manageServer.html");
 		else if (det == "home") res.sendFile(__dirname + "/public/index.html");
+		else if (det == "homeprova") res.sendFile(__dirname + "/public/index2.html");
 		else if (det == "sitemap") res.sendFile(__dirname + "/sitemap.html");
 		else if (det == "myarea") res.sendFile(__dirname + "/public/myarea.html");
 		else if (det == "utility") res.sendFile(__dirname + "/public/index.html");
