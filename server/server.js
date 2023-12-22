@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-//const session = require('express-session');
+const session = require('express-session');
 //const redis = require('redis');
 //const redisStore = require('connect-redis')(session);
 const multer = require('multer');
@@ -12,6 +12,7 @@ const fs = require("fs");
 const http = express();
 const { exec } = require('child_process');
 const bodyParser = require('body-parser');
+const cookieParser = require("cookie-parser");
 const portHTTP = process.env.PORT || "80";
 const portHTTPS = process.env.PORT || "443";
 const options = {key: fs.readFileSync("/etc/letsencrypt/live/italiadelfuturo.it/privkey.pem"), cert:fs.readFileSync("/etc/letsencrypt/live/italiadelfuturo.it/fullchain.pem")};
@@ -25,6 +26,8 @@ const domains = ["italiadelfuturo.it"];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(session({secret: "idfKey", saveUninitialized: true, resave: true}));
 //app.use(session({secret: 'BerTiv2022', store: new redisStore({ host: 'localhost', port: 6379, client: redisclient, ttl: 260}), saveUninitialized: true, resave: false}));
 app.use("/video", express.static(path.join(__dirname, 'video')));
 app.use("/js", express.static(path.join(__dirname, 'js')));
@@ -54,13 +57,13 @@ app.get('/:det', function(req,res)
 	var det = req.params.det;
 	var host = req.headers.host;
 	if (host == domains[0])
-    	{
-		if (det == "manageServer") res.sendFile(__dirname + "/public/manageServer.html");
-		else if (det == "home") res.sendFile(__dirname + "/public/index.html");
+    {
+		if (det == "home") res.sendFile(__dirname + "/public/index.html");
 		else if (det == "homeprova") res.sendFile(__dirname + "/public/index2.html");
 		else if (det == "sitemap") res.sendFile(__dirname + "/sitemap.html");
 		else if (det == "myarea") res.sendFile(__dirname + "/public/myarea.html");
 		else if (det == "utility") res.sendFile(__dirname + "/public/index.html");
+		else if (det == "login") res.sendFile(__dirname + "/public/login.html");
 		else res.status(404).send("Opss! Pagina errata o accesso non consentito.");
 	}
 	else
@@ -103,6 +106,18 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 
 app.post('/requests', function(req,res)
 {
+	if (req.body.value = "login")
+	{
+		req.session.save();
+	}
+	else if (req.body.value = "check")
+	{
+		
+	}
+	else if (req.body.value = "logout")
+	{
+		req.session.destroy();
+	}
 });
 
 //---------------------------------------------------------------------------------------------------------------
