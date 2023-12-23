@@ -132,7 +132,6 @@ body::-webkit-scrollbar{
 footer {
   background-color: #f8f9fa;
   padding: 40px 0;
-  position: absolute;
   bottom: 0;
   width: 100%;
 }
