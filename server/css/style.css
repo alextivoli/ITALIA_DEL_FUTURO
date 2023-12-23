@@ -127,6 +127,16 @@ body::-webkit-scrollbar{
   max-height: 200px; /* Imposta l'altezza massima desiderata */
 }
 
+/* ! Footer */
+
+footer {
+  background-color: #f8f9fa;
+  padding: 40px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 
 
 
