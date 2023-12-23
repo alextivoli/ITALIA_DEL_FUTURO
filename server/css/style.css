@@ -70,6 +70,7 @@ body::-webkit-scrollbar{
   min-height: 100%;
   z-index: 1;
   position: relative;
+  margin-top: 10vh;
 }
 
 .hero__content h1,
