@@ -87,7 +87,7 @@ body::-webkit-scrollbar{
   background-size: cover;
   overflow: hidden;
   padding: 10vw;
-  background:  linear-gradient(0deg, rgba(255, 255, 255, 0.222), rgba(89, 180, 255, 0.459)), url('../img/background/italy1.png') center no-repeat ;
+  background:  linear-gradient(0deg, rgba(255, 255, 255, 0.222), rgba(255, 255, 255, 0.459)), url('../img/background/italy1.png') right no-repeat ;
 
 }
 
