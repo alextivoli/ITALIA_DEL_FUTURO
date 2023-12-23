@@ -1,4 +1,15 @@
 
+/* ! Body */
+
+body {
+  background: #fff;
+}
+
+body::-webkit-scrollbar{
+  display: none;
+}
+
+
 /* ! Navbar */
 
 .nav-home{
@@ -1901,13 +1912,7 @@ display: none;
 
 
 
-body {
-  background: #2d2d37;
-}
 
-body::-webkit-scrollbar{
-  display: none;
-}
 
 a {
   color: #2d2d37;
