@@ -74,7 +74,6 @@ body::-webkit-scrollbar{
 }
 
 .hero__content h1,
-.hero__content p{color: #fff;}
 
 .hero--small{height: 450px;text-align: center;}
 
@@ -87,7 +86,7 @@ body::-webkit-scrollbar{
   display: flex; width: 100%;align-items: center;
   background-size: cover;
   overflow: hidden;
-  background-color: #fff;
+  background:  linear-gradient(0deg, rgba(255, 255, 255, 0.222), rgba(89, 180, 255, 0.459)), url('../img/background/itlaly.png') center no-repeat ;
 
 }
 

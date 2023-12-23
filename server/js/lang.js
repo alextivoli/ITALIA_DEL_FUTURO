@@ -5,6 +5,7 @@ var arrLang = {
       "NEWS": "NEWS",
       "TRANSPARENCY": "TRANSPARENCY",
       "CONTACTS": "CONTACTS",
+      "SUBSCRIBE":"SUBSCRIBE",
       "IT":"Italian",
       "EN":"English",
       "SDP" : "Find out who we are"
@@ -18,6 +19,7 @@ var arrLang = {
       "NEWS": "NOTIZIE",
       "TRANSPARENCY": "TRASPARENZA",
       "CONTACTS": "CONTATTI",
+      "SUBSCRIBE":"ISCRIVITI",
       "IT":"Italiano",
       "EN":"Inglese",
       "SDP" : "Scopri chi siamo"
