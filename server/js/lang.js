@@ -2,7 +2,8 @@ var arrLang = {
     "en-gb": {
       "HOME": "HOME", 
       "PARTY": "THE PARTY ",
-      "STATUTE": "THE STATUTE",
+      "NEWS": "NEWS",
+      "TRANSPARENCY": "TRANSPARENCY",
       "CONTACTS": "CONTACTS",
       "IT":"Italian",
       "EN":"English",
@@ -14,7 +15,8 @@ var arrLang = {
     "it-it": {
       "HOME": "HOME", 
       "PARTY": "IL PARTITO",
-      "STATUTE": "LO STATUTO",
+      "NEWS": "NOTIZIE",
+      "TRANSPARENCY": "TRASPARENZA",
       "CONTACTS": "CONTATTI",
       "IT":"Italiano",
       "EN":"Inglese",
