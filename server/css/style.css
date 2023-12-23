@@ -121,6 +121,13 @@ body::-webkit-scrollbar{
 }
 
 
+/* ! Immagini */
+
+.max-height-img {
+  max-height: 200px; /* Imposta l'altezza massima desiderata */
+}
+
+
 
 
 
