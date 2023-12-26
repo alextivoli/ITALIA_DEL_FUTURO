@@ -2,14 +2,126 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IdF - Login</title>
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
-	<meta name="google-signin-client_id" content="95505218480-4r0e53vsg4dc2bn8bopor155sf78lavs.apps.googleusercontent.com">
-	
+    <title>Idf - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .login-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+		
+		#error {
+			color: red;
+		}
+    </style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		function validateForm()
+		{
+			var e = document.getElementById("email").value;
+			var p = document.getElementById("password").value;
+			
+			if (e != '' && p != '')
+			{
+				//eventuali controlli su e e p
+				$.ajax({"/requests", {value:'login', email:e, password:p}, success: function(data)
+				{
+					if (data != '') {window.location.replace('https://italiadelfuturo.it/myarea/');} else {document.getElementById("error").innerHTML = 'Errore nel login, riprova.';}
+				}});
+			}
+			else
+			{
+				document.getElementById("error").innerHTML = 'Compila tutti i campi!';
+			}
+		}
+		
+		function setError()
+		{
+			document.getElementById("error").innerHTML = '';
+		}
+		
+		function checkSession()
+		{
+			$.ajax({"/requests", {value:'check'}, success: function(data)
+			{
+				if (data != '')
+				{
+					window.location.replace('https://italiadelfuturo.it/myarea/');
+				}
+			}});
+		}
+		
+		$(document).ready(function()
+		{
+			checkSession();
+		});
+	</script>
 </head>
 <body>
-	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form class="login-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" onclick="setError()" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password	</label>
+                <input type="password" id="password" name="password" onclick="setError()" required>
+            </div>
+            <button class="login-button" onclick="validateForm()">Entra</button><br>
+			<span id="error"></span>
+        </form>
+    </div>
 </body>
 </html>

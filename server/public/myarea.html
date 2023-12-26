@@ -45,6 +45,22 @@
 			fileError.textContent = '';
 			document.getElementById('creaArticolo').submit();
 		}
+		
+		function checkSession()
+		{
+			$.ajax({"/requests", {value:'check'}, success: function(data)
+			{
+				if (data == '')
+				{
+					window.location.replace('https://italiadelfuturo.it/login/');
+				}
+			}});
+		}
+		
+		$(document).ready(function()
+		{
+			checkSession();
+		});
 	</script>
 </head>
 <body>

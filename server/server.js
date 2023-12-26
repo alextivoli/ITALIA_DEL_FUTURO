@@ -13,6 +13,7 @@ const http = express();
 const { exec } = require('child_process');
 const bodyParser = require('body-parser');
 const cookieParser = require("cookie-parser");
+const crypto = require('crypto');
 const portHTTP = process.env.PORT || "80";
 const portHTTPS = process.env.PORT || "443";
 const options = {key: fs.readFileSync("/etc/letsencrypt/live/italiadelfuturo.it/privkey.pem"), cert:fs.readFileSync("/etc/letsencrypt/live/italiadelfuturo.it/fullchain.pem")};
@@ -108,15 +109,32 @@ app.post('/requests', function(req,res)
 {
 	if (req.body.value = "login")
 	{
-		req.session.save();
+		var e = req.body.email;
+		var p = req.body.password;
+		var hash = crypto.createHash('md5').update(p).digest("hex");
+		
+		dbconn.query('SELECT * FROM utenti WHERE username=? AND password=?',[e,hash],function(err, rows, fields)
+        {
+			if (rows.length>0)
+			{
+				req.session.mail = e;
+				req.session.save();
+				res.send(e);
+			}
+			else
+			{
+				res.send('');
+			}
+		});
 	}
 	else if (req.body.value = "check")
 	{
-		
+		if (req.session.mail){res.send(req.session.mail);}else{res.send('');}	
 	}
 	else if (req.body.value = "logout")
 	{
 		req.session.destroy();
+		res.send('https://italiadelfuturo.it/login/');
 	}
 });
 
