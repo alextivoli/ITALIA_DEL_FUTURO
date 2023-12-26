@@ -107,6 +107,8 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 
 app.post('/requests', function(req,res)
 {
+	console.log(req.body.data);
+	console.log(req.body.value);
 	if (req.body.value = "login")
 	{
 		var e = req.body.email;
