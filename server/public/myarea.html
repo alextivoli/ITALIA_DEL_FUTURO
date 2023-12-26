@@ -50,7 +50,7 @@
 		
 		function checkSession()
 		{
-			$.ajax({"/requests", {value:'check'}, success: function(data)
+			$.ajax({"/requests", "POST", {value:'check'}, success: function(data)
 			{
 				if (data == '')
 				{
