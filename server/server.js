@@ -107,9 +107,7 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 
 app.post('/requests', function(req,res)
 {
-	console.log(req.body.data);
-	console.log(req.body.value);
-	if (req.body.value = "login")
+	if (req.body.value == "login")
 	{
 		var e = req.body.email;
 		var p = req.body.password;
@@ -129,11 +127,11 @@ app.post('/requests', function(req,res)
 			}
 		});
 	}
-	else if (req.body.value = "check")
+	else if (req.body.value == "check")
 	{
 		if (req.session.mail){res.send(req.session.mail);}else{res.send('');}	
 	}
-	else if (req.body.value = "logout")
+	else if (req.body.value == "logout")
 	{
 		req.session.destroy();
 		res.send('https://italiadelfuturo.it/login/');
