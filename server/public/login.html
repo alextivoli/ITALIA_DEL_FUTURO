@@ -75,7 +75,7 @@
 			if (e != '' && p != '')
 			{
 				//eventuali controlli su e e p
-				$.ajax({"/requests", "POST", {value:'login', email:e, password:p}, success: function(data)
+				$.ajax({url: "/requests", type: "POST", data: {value: "login", email: e, password: p}, success: function(data)
 				{
 					if (data != '') {window.location.replace('https://italiadelfuturo.it/myarea/');} else {document.getElementById("error").innerHTML = 'Errore nel login, riprova.';}
 				}});
@@ -93,7 +93,7 @@
 		
 		function checkSession()
 		{
-			$.ajax({"/requests", "POST", {value:'check'}, success: function(data)
+			$.ajax({url: "/requests", type: "POST", data: {value: "check"}, success: function(data)
 			{
 				if (data != '')
 				{
