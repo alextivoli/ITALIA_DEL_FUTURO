@@ -169,6 +169,11 @@ body::-webkit-scrollbar{
   background-color: #2ca9e1;
 }
 
+
+.slide-form{
+  width: 70vw;
+}
+
 #slide_animated_form {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
