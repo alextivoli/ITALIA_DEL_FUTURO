@@ -144,9 +144,6 @@ body::-webkit-scrollbar{
   width: 40vh;
   max-height: 40vh;
   max-width: 40vh;
-  margin-left: 10vw;
-  margin-right: 20vw;
-  border: 0.5vh solid  #000000cc;
   overflow: hidden;
 }
 
