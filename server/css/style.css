@@ -102,7 +102,6 @@ body::-webkit-scrollbar{
   display: grid; width: 100%;align-items: center;
   background-size: cover;
   overflow: hidden;
-  padding: 10vw;
   background-color: #2ca9e1;
 
 }
