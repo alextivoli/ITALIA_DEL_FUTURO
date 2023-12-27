@@ -115,6 +115,72 @@ body::-webkit-scrollbar{
 }
 
 
+/* ! Content-Trasparenza */
+
+.content-trasparency{
+
+  position: relative;
+  height: 20vh;
+  display: grid; width: 100%;align-items: center;
+  background-size: cover;
+  overflow: hidden;
+  background-color: #fff;
+
+}
+
+#transparencyBanner {
+  background-color: #007bff; 
+  color: #ffffff;
+  padding: 10px; 
+  text-align: center; 
+}
+
+#transparencyBanner a {
+  color: #ffffff; 
+  text-decoration: underline; 
+  font-weight: bold; 
+}
+
+
+/* ! Content-newsletter */
+
+.content-newsletter{
+
+  position: relative;
+  height: 50vh;
+  display: grid; width: 100%;
+  align-items: center;
+  background-size: cover;
+  overflow: hidden;
+  background-color: #2ca9e1;
+
+}
+
+/* ! Content-contact */
+
+.content-contact{
+  position: relative;
+  height: auto;
+  display: grid; 
+  width: 100%;
+  align-items: center;
+  background-size: cover;
+  overflow: hidden;
+  background-color: #2ca9e1;
+}
+
+#slide_animated_form {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#confirmation_message {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
 /* ! Logo */
 
 .logo-index {
@@ -737,11 +803,6 @@ background-size: contain; */
   overflow: hidden;
 }
 
-.contact_email{
-  background-color: #181514cc; 
-  margin-top: 3vh;
-  width: 70vw;
-}
 
 .contact_email_prodotti{
   background-color: #181514cc; 
