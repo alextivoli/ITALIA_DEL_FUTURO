@@ -328,7 +328,7 @@
 
         <div class="content-contact ">
 
-            <div class="row mb-4" id="slide_form">
+            <div class="row mb-4" id="slideForm">
                 <h1 class="text-center mb-4">Contattaci</h1>
                 <div class="container slide-form d-flex justify-content-center ">
 
@@ -390,12 +390,14 @@
                         </div>
                     </form>
 
-                    <div id="confirmation_message">
-                        <h3>Conferma di invio!</h3>
-                        <p>Grazie per averci contattato. Riceverai una risposta al più presto.</p>
-                    </div>
+                    
 
                 </div>
+            </div>
+
+            <div id="confirmation_message">
+                <h3>Conferma di invio!</h3>
+                <p>Grazie per averci contattato. Riceverai una risposta al più presto.</p>
             </div>
         </div>
 
@@ -495,7 +497,7 @@
             // Contact
             document.getElementById('form').addEventListener('submit', function (event) {
                 event.preventDefault();
-                document.getElementById('slide_form').style.opacity = '0';
+                document.getElementById('slideForm').style.opacity = '0';
                 document.getElementById('confirmation_message').style.display = 'block';
             });
 
