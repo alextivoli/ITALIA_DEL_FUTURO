@@ -90,7 +90,7 @@ body::-webkit-scrollbar{
   z-index: 1;
   position: relative;
   margin-top: 20vh;
-  background:  linear-gradient(0deg, rgba(255, 255, 255, 0.222), rgba(255, 255, 255, 0.459)), url('../img/background/news.png') right no-repeat ;
+  background-color: #2ca9e1;  
 }
 
 /* ! Content-Bio */
