@@ -59,6 +59,14 @@
 			}});
 		}
 		
+		function logout()
+		{
+			$.ajax({url: "/requests", type: "POST", data: {value: "logout"}, success: function(data)
+			{
+				window.location.replace(data);
+			}});
+		}
+		
 		$(document).ready(function()
 		{
 			checkSession();
@@ -79,5 +87,6 @@
         <br>
         <input type="button" onclick="validateForm()" value="Invia">
     </form>
+	<button onclick="logout()">Logout</button>
 </body>
 </html>
