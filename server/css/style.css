@@ -77,6 +77,7 @@ body::-webkit-scrollbar{
 
 .hero--small{text-align: left;}
 
+
 /* ! Content-Bio */
 
 .content-bio{
@@ -97,7 +98,7 @@ body::-webkit-scrollbar{
 .content-newsletter{
 
   position: relative;
-  height: 100vh;
+  height: 50vh;
   display: grid; width: 100%;align-items: center;
   background-size: cover;
   overflow: hidden;
