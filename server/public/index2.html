@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://italiadelfuturo.it/img/logo.ico" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <title>HOME</title>
 
     <script>
@@ -325,8 +326,10 @@
 
         <div class="content-contact ">
 
-            <div class="row mb-4">
+            <div class="row mb-4" id="slide_form">
                 <div class="container d-flex justify-content-center ">
+
+                    <h1 class="text-center mb-4">Contattaci</h1>
 
                     <form action="#" id="form">
                         <div class="mb-3 mt-3">
@@ -488,7 +491,7 @@
             // Contact
             document.getElementById('form').addEventListener('submit', function (event) {
             event.preventDefault(); 
-            document.getElementById('slide_animated_form').style.opacity = '0';
+            document.getElementById('slide_form').style.opacity = '0';
             document.getElementById('confirmation_message').style.display = 'block';
         });
 
