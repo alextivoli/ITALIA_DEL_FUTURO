@@ -92,6 +92,29 @@ body::-webkit-scrollbar{
 }
 
 
+/* ! Content-Newsletter */
+
+.content-newsletter{
+
+  position: relative;
+  height: 100vh;
+  display: grid; width: 100%;align-items: center;
+  background-size: cover;
+  overflow: hidden;
+  padding: 10vw;
+  background-color: #2ca9e1;
+
+}
+
+#newsletterForm, #confirmationMessage {
+  display: block;
+}
+
+#confirmationMessage {
+  display: none;
+}
+
+
 /* ! Logo */
 
 .logo-index {
@@ -1645,7 +1668,8 @@ display: none;
 
   .content-bio{
     background:  linear-gradient(0deg, rgba(255, 255, 255, 0.222), rgba(255, 255, 255, 0.459)), url('../img/background/italy1.png') center no-repeat ;
-
+    display: grid;
+    justify-content: center;
   }
 
 
