@@ -141,6 +141,22 @@ body::-webkit-scrollbar{
 }
 
 
+.content-subscribe{
+
+  position: relative;
+  height: 35vh;
+  display: grid; 
+  width: 100%;
+  align-items: center;
+  background-size: cover;
+  overflow: hidden;
+  background:  linear-gradient(0deg, rgba(255, 255, 255, 0.222), rgba(255, 255, 255, 0.459)), url('../img/background/news.png') center no-repeat ;
+  text-align: center; 
+  font-size: 15%;
+
+}
+
+
 /* ! Content-contact */
 
 .content-contact{
