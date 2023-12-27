@@ -137,9 +137,17 @@ body::-webkit-scrollbar{
 }
 
 .circle-image {
-  width: 100%;
-  height: 100%;
+  align-self: center;
   object-fit: cover;
+  border-radius: 100%;
+  height: 40vh;
+  width: 40vh;
+  max-height: 40vh;
+  max-width: 40vh;
+  margin-left: 10vw;
+  margin-right: 20vw;
+  border: 0.5vh solid  #000000cc;
+  overflow: hidden;
 }
 
 /* ! Footer */
