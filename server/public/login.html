@@ -69,26 +69,26 @@
 	<script>
 		function validateForm()
 		{
-			var e = document.getElementById("email").value;
-			var p = document.getElementById("password").value;
+			var e = $("#email").val();
+			var p = $("#password").val();
 			
 			if (e != '' && p != '')
 			{
 				//eventuali controlli su e e p
 				$.ajax({url: "/requests", type: "POST", data: {value: "login", email: e, password: p}, success: function(data)
 				{
-					if (data != '') {window.location.replace('https://italiadelfuturo.it/myarea/');} else {document.getElementById("error").innerHTML = 'Errore nel login, riprova.';}
+					if (data != '') {window.location.replace('https://italiadelfuturo.it/myarea/');} else {$("#error").text('Errore nel login, riprova.');}
 				}});
 			}
 			else
 			{
-				document.getElementById("error").innerHTML = 'Compila tutti i campi!';
+				$("#error").text('Compila tutti i campi!');
 			}
 		}
 		
 		function setError()
 		{
-			document.getElementById("error").innerHTML = '';
+			$("#error").text('');
 		}
 		
 		function checkSession()
