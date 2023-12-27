@@ -13,7 +13,121 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://italiadelfuturo.it/img/logo.ico" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <title>HOME</title>
+
+    <script>
+        $().ready(function () {
+            // Selezione form e definizione dei metodi di validazione
+            $("#form").validate({
+                // Definiamo le nostre regole di validazione
+                rules: {
+                    // login - nome del campo di input da validare
+                    name: {
+                        required: true
+                    },
+                    emailAddress: {
+                        required: true,
+                        email: true
+                    },
+                    number: {
+                        required: true,
+                        minlength: 10
+                    },
+                    message: {
+                        required: true
+                    },
+                    invalidCheck: {
+                        required: true
+                    }
+                },
+                messages: {
+                    name: "Inserisci un nome valido",
+                    emailAddress: "Inserisci un indirizzo mail valido",
+                    number: {
+                        required: "Inserisci un numero di telefono",
+                        minlength: "Il numero deve essere lunga minimo 10 cifre"
+                    },
+                    message: "Inserisci un messaggio di richiesta",
+                    invalidCheck: "Accetta i termini e la privacy policy"
+                },
+                // Settiamo il submit handler per la form
+                submitHandler: function (form) {
+                    var fields = $('#form').serializeArray();
+                    // form.submit();
+                    $.ajax(
+                        {
+                            url: '/formRequestSimoTova',
+                            type: 'post',
+                            dataType: 'json',
+                            data: fields,
+                            success: function (data) {
+                                console.log(data);
+                            }
+                        });
+
+                    form.reset();
+
+                }
+            });
+        });
+
+
+        function setLng(l) {
+            if (l == "it-it") {
+                document.getElementById("btn_en").style.display = "none"
+                document.getElementById("btn_it").style.display = "inherit"
+            }
+            else {
+                document.getElementById("btn_en").style.display = "inherit"
+                document.getElementById("btn_it").style.display = "none"
+            }
+        }
+
+        function manageLang() {
+            $.ajax({
+                url: '/session',
+                type: 'post',
+                dataType: 'json',
+                data: { "code": 1 },
+                success: function (lng) {
+                    setLng(lng);
+                    $(".lang").each(function (index, element) {
+                        $(this).text(arrLang[lng][$(this).attr("key")]);
+                    });
+                },
+                error: function (err) {
+                    if (err.status == 200) {
+                        var lng = err.responseText;
+                        setLng(lng);
+                        $(".lang").each(function (index, element) {
+                            $(this).text(arrLang[lng][$(this).attr("key")]);
+                        });
+                    }
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            manageLang();
+
+            $(".translate").click(function () {
+                var lang = $(this).attr("id");
+                $.ajax({
+                    url: '/session',
+                    type: 'post',
+                    dataType: 'json',
+                    data: { "code": 2, "lang": lang },
+                    success: function (data) {
+                        window.location.reload();
+                    },
+                    error: function (err) {
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+    </script>
 
 </head>
 
@@ -67,12 +181,18 @@
         </div>
 
         <ul class="menu">
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="home" href='/home' key="HOME"></a></li>
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="party" href='/party' key="PARTY"></a></li>
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="news" href='/news' key="NEWS"></a></li>
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="trasparency" href='/trasparency' key="TRASPARENCY"></a></li>
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="contacts" href='/contacts' key="CONTACTS"></a></li>
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="subscribe" href='/subscribe' key="SUBSCRIBE"></a></li>
+            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="home" href='/home' key="HOME"></a>
+            </li>
+            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="party" href='/party' key="PARTY"></a>
+            </li>
+            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="news" href='/news' key="NEWS"></a>
+            </li>
+            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="trasparency" href='/trasparency'
+                    key="TRASPARENCY"></a></li>
+            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="contacts" href='/contacts'
+                    key="CONTACTS"></a></li>
+            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="subscribe" href='/subscribe'
+                    key="SUBSCRIBE"></a></li>
         </ul>
 
         <div class='hero'>
@@ -132,36 +252,114 @@
             </div>
         </div>
 
-        <div class="content-bio">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Il Partito</h2>
-                    Italia del Futuro, nasce nel 2017 a Maranello da un’idea di Davide Nostrini e Nicolò de Vercelli. 
-                    Il giovane gruppo di amici in pochi mesi si trasforma in uno dei più importanti gruppi politici della città, 
-                    tanto da diventare nel 2019 a soli due anni dalla nascita la quarta forza politica. 
-                    Nel 2019 il progetto si diffonde in provincia e in 4 anni il gruppo elegge numerosi amministratori, 
-                    dimostrando di essere un partner centrale per il centro-sinistra modenese. 
-                    Nel 2022 Davide Nostrini viene rieletto Presidente dopo 5 anni di mandato.
+        <div class="content-newsletter">
+            <div class="container mt-3 mb-3">
+                <div class="row justify-content-center">
+                    <div class="col-md-6" id="newsletterForm">
+                        <h1 class="text-center mb-4">Iscriviti alla nostra Newsletter</h1>
+                        <form id="signupForm">
+                            <div class="form-group mb-2">
+                                <label for="nome">Nome:</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Inserisci il tuo nome"
+                                    required>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="surname">Cognome:</label>
+                                <input type="text" class="form-control" id="surname"
+                                    placeholder="Inserisci il tuo cognome" required>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email"
+                                    required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Iscriviti</button>
+                        </form>
+                    </div>
+
+                    <div class="col-md-6 text-center" id="confirmationMessage">
+                        <h2 class="text-success">Grazie per esserti iscritto!</h2>
+                        <p>Riceverai presto le nostre ultime novità nella tua casella di posta.</p>
+                    </div>
                 </div>
             </div>
-        
-            <div class="row mt-5">
-                <div class="col-6" style="text-align: center;">
-                    <h2>Davide Nostrini</h2>
-                    <div class="row">
-                        <div class=' d-flex justify-content-center' style='margin-bottom: 5%; margin-top: 5%;'>
-                            <img class='circle-image ' src='../img/dn.jpg' />
-                        </div>
-                    </div>
-                    <div class="row"></div>
-                    <div class=" d-flex justify-content-center">
-                        <a href="https://www.tuositoweb.com" target="_blank" class="btn btn-success">Visita il sito web</a>
-                    </div>
-                </div>
-            </div>
-        
+
         </div>
-        
+
+
+        <div class="content-contact ">
+
+            <div class="row mb-4" id="slide_form">
+                <h1 class="text-center mb-4">Contattaci</h1>
+                <div class="container slide-form d-flex justify-content-center ">
+
+                    <form action="#" id="form">
+                        <div class="mb-3 mt-3">
+                            <p style="color: white; font-size: 3vh"> <b class="lang" key="FORM0"></b>
+                            </p>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label class="form-label text_contact lang" for="name" key="FORM1"></label>
+                            <input type="text" name="name" id="name" class="form-control text_contact_input"
+                                placeholder="Nome e Cognome">
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label class="form-label text_contact lang" for="soc" key="FORM2"></label>
+                            <input class="form-control text_contact_input " name="soc" id="soc" type="text"
+                                placeholder="Società">
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label class="form-label text_contact lang" for="emailAddress" key="FORM3"></label>
+                            <input class="form-control text_contact_input form-control" name="emailAddress"
+                                id="emailAddress" type="email" placeholder="Indirizzo email">
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label class="form-label text_contact lang" for="number" key="FORM4"></label>
+                            <input class="form-control text_contact_input form-control" name="number" id="number"
+                                type="tel" placeholder="Telefono">
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <label class="form-label text_contact lang" for="message" key="FORM5"></label>
+                            <textarea class="form-control text_contact_input form-control" name="message" id="message"
+                                type="text" placeholder="Messaggio" style="height: 10rem;"></textarea>
+                        </div>
+
+                        <div class="mb-3 form-group">
+                            <div class="form-check">
+
+                                <label class="form-check-label" for="invalidCheck" style='color: rgb(255, 255, 255);'>
+                                    <p class="lang" key="FORM6"></p> <a
+                                        href="https://www.iubenda.com/terms-and-conditions"
+                                        class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe "
+                                        title="Terms and Conditions ">Terms and Conditions</a>
+                                    <script
+                                        type="text/javascript">(function (w, d) { var loader = function () { var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s, tag); }; if (w.addEventListener) { w.addEventListener("load", loader, false); } else if (w.attachEvent) { w.attachEvent("onload", loader); } else { w.onload = loader; } })(window, document);</script>
+                                </label>
+                                <input class="form-check-input" type="checkbox" name="invalidCheck" id="invalidCheck">
+
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3 d-grid form-group">
+                            <input name="formBt" id="formBt" class="btn submit button_contact_submit btn-lg "
+                                type="submit" value="Send" class="form-control">
+                        </div>
+                    </form>
+
+                    <div id="confirmation_message">
+                        <h3>Conferma di invio!</h3>
+                        <p>Grazie per averci contattato. Riceverai una risposta al più presto.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
 
         <!-- Footer -->
         <footer class="text-center text-lg-left">
@@ -244,6 +442,23 @@
             }
 
             hamburger.addEventListener("click", toggleMenu);
+
+
+            // NewsLetter
+            document.getElementById('signupForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                document.getElementById('newsletterForm').style.display = 'none';
+                document.getElementById('confirmationMessage').style.display = 'block';
+            });
+
+
+            // Contact
+            document.getElementById('form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                document.getElementById('slide_form').style.opacity = '0';
+                document.getElementById('confirmation_message').style.display = 'block';
+            });
 
         </script>
         <script src='https://kit.fontawesome.com/9e95f3b251.js' crossorigin='anonymous'></script>
