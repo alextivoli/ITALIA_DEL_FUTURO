@@ -62,6 +62,9 @@ app.get('/:det', function(req,res)
 		if (det == "home") res.sendFile(__dirname + "/public/index.html");
 		else if (det == "homeprova") res.sendFile(__dirname + "/public/index2.html");
 		else if (det == "news") res.sendFile(__dirname + "/public/news.html");
+		else if (det == "subscribe") res.sendFile(__dirname + "/public/subscribe.html");
+		else if (det == "trasparency") res.sendFile(__dirname + "/public/trasparency.html");
+		else if (det == "contact") res.sendFile(__dirname + "/public/contact.html");
 		else if (det == "sitemap") res.sendFile(__dirname + "/sitemap.html");
 		else if (det == "myarea") res.sendFile(__dirname + "/public/myarea.html");
 		else if (det == "utility") res.sendFile(__dirname + "/public/index.html");
