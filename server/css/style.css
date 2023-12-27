@@ -120,11 +120,11 @@ body::-webkit-scrollbar{
 .content-trasparency{
 
   position: relative;
-  height: 20vh;
+  height: 35vh;
   display: grid; width: 100%;align-items: center;
   background-size: cover;
   overflow: hidden;
-  background:  linear-gradient(0deg, rgba(255, 255, 255, 0.222), rgba(255, 255, 255, 0.459)), url('../img/background/doc.jpg') right no-repeat ;
+  background:  linear-gradient(0deg, rgba(255, 255, 255, 0.222), rgba(255, 255, 255, 0.459)), url('../img/background/doc.jpg') center no-repeat ;
   text-align: center; 
 
 }
@@ -248,6 +248,10 @@ footer {
 
 .text-color-black{
   color: #000;
+}
+
+.text-ubuntu{
+  font-family: 'Ubuntu', sans-serif;
 }
 
 
