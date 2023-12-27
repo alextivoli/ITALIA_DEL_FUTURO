@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://italiadelfuturo.it/img/logo.ico" />
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-    <title>HOME</title>
+    <title>NEWS</title>
 
     <script>
         $().ready(function () {
@@ -57,7 +57,7 @@
                     // form.submit();
                     $.ajax(
                         {
-                            url: '/formRequestSimoTova',
+                            url: '/formRequest',
                             type: 'post',
                             dataType: 'json',
                             data: fields,
@@ -456,7 +456,7 @@
             // Contact
             document.getElementById('form').addEventListener('submit', function (event) {
                 event.preventDefault();
-                document.getElementById('slide_form').style.opacity = '0';
+                document.getElementById('slide_form').style.display = 'none';
                 document.getElementById('confirmation_message').style.display = 'block';
             });
 

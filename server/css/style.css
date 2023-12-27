@@ -266,6 +266,15 @@ footer {
   font-weight: 400;
 }
 
+/* ! Loading-screen */
+
+#loading_screen{
+  background: #2ca9e1;
+  height: 100vh;
+  width: 100vw;
+}
+
+
 
 
 
@@ -2039,11 +2048,6 @@ display: none;
 
 }
 
-#loading_screen{
-  background: #100808;
-  height: 100vh;
-  width: 100vw;
-}
 
 
 
