@@ -99,7 +99,9 @@ body::-webkit-scrollbar{
 
   position: relative;
   height: 50vh;
-  display: grid; width: 100%;align-items: center;
+  display: grid; 
+  width: 100%;
+  align-items: center;
   background-size: cover;
   overflow: hidden;
   background-color: #2ca9e1;
@@ -139,20 +141,6 @@ body::-webkit-scrollbar{
 }
 
 
-/* ! Content-newsletter */
-
-.content-newsletter{
-
-  position: relative;
-  height: 50vh;
-  display: grid; width: 100%;
-  align-items: center;
-  background-size: cover;
-  overflow: hidden;
-  background-color: #2ca9e1;
-
-}
-
 /* ! Content-contact */
 
 .content-contact{
@@ -164,6 +152,7 @@ body::-webkit-scrollbar{
   background-size: cover;
   overflow: hidden;
   background-color: #2ca9e1;
+  padding: 5%;
 }
 
 
@@ -175,6 +164,11 @@ body::-webkit-scrollbar{
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
+
+form{
+  width: 35vw;
+}
+
 
 #confirmation_message {
   display: none;
@@ -256,6 +250,24 @@ footer {
 .text-ubuntu{
   font-family: 'Ubuntu', sans-serif;
 }
+
+.text_contact{
+  color: #c0c0c0;
+  font-family: 'EB Garamond', serif;
+  font-size:2vh;
+  font-weight: 400;
+  text-align: center;
+}
+
+.text_contact_input{
+  color: #100808;
+  font-family: 'EB Garamond', serif;
+  font-size:2vh;
+  font-weight: 400;
+}
+
+
+
 
 
 
@@ -393,20 +405,6 @@ footer {
 
 }
 
-.text_contact{
-  color: #c0c0c0;
-  font-family: 'EB Garamond', serif;
-  font-size:2vh;
-  font-weight: 400;
-  text-align: center;
-}
-
-.text_contact_input{
-  color: #100808;
-  font-family: 'EB Garamond', serif;
-  font-size:2vh;
-  font-weight: 400;
-}
 
 .tipo_formato{
   text-align: center;
