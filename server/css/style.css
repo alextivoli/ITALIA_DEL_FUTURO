@@ -290,6 +290,24 @@ footer {
   width: 100vw;
 }
 
+/* ! button */
+
+.button-summit{
+  color: #faf6f6cc;
+  font-family: 'EB Garamond', serif;
+  font-size:xx-large;
+  font-weight: 40;
+  text-align: center;
+}
+
+.button-summit:hover{
+  color: #951919cc;
+  font-family: 'EB Garamond', serif;
+  font-size:xx-large;
+  font-weight: 40;
+  text-align: center;
+}
+
 
 
 
