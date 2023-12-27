@@ -82,7 +82,7 @@ body::-webkit-scrollbar{
 .content-bio{
 
   position: relative;
-  height: 100vh;
+  height: 110vh;
   display: grid; width: 100%;align-items: center;
   background-size: cover;
   overflow: hidden;
