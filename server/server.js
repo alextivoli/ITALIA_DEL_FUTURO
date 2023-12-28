@@ -143,6 +143,9 @@ app.post('/requests', function(req,res)
 	}
 	else if (req.body.value == "setLang")
 	{
+		req.session.lang = req.body.lang;
+		req.session.save();
+		res.send(req.session.lang);
 		
 	}
 	else if (req.body.value == "getLang")

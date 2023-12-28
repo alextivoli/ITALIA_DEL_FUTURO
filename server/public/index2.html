@@ -40,10 +40,9 @@
                 success: function (lng)
 				{
                     console.log("lng ", lng);
-					if (lng == '')
+					if (lng != '')
 					{
 						setLng(lng);
-                        console.log(lng);
 						$(".lang").each(function (index, element)
 						{
 							$(this).text(arrLang[lng][$(this).attr("key")]);
