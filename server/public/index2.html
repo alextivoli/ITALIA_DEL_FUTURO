@@ -17,7 +17,7 @@
     <title>Idf - Homepage</title>
 
     <script>
-           
+
 
 
         function setLng(l) {
@@ -31,35 +31,29 @@
             }
         }
 
-        function manageLang()
-		{
+        function manageLang() {
             $.ajax({
                 url: '/requests',
                 type: 'POST',
                 data: { value: "getLang" },
-                success: function (lng)
-				{
-					if (lng != '')
-					{
-						setLng(lng);
-						$(".lang").each(function (index, element)
-						{
-							$(this).text(arrLang[lng][$(this).attr("key")]);
-						});
-					}
-					else
-					{
-						var lang = $(this).attr("id");
-						$.ajax({
-							url: '/requests',
-							type: 'POST',
-							data: { value: "setLang", lang: ""},
-							success: function (data) 
-							{
-								window.location.reload(); //oppure aggiorno direttamente
-							}
-						});
-					}
+                success: function (lng) {
+                    if (lng != '') {
+                        setLng(lng);
+                        $(".lang").each(function (index, element) {
+                            $(this).text(arrLang[lng][$(this).attr("key")]);
+                        });
+                    }
+                    else {
+                        var lang = $(this).attr("id");
+                        $.ajax({
+                            url: '/requests',
+                            type: 'POST',
+                            data: { value: "setLang", lang: "" },
+                            success: function (data) {
+                                window.location.reload(); //oppure aggiorno direttamente
+                            }
+                        });
+                    }
                 }
             });
         }
@@ -73,15 +67,14 @@
                     url: '/requests',
                     type: 'POST',
                     data: { value: "setLang", lang: lang },
-                    success: function (data)
-					{
+                    success: function (data) {
                         window.location.reload(); //oppure aggiorno direttamente
                     }
                 });
             });
 
-             // Selezione form e definizione dei metodi di validazione
-             $("#form").validate({
+            // Selezione form e definizione dei metodi di validazione
+            $("#form").validate({
                 // Definiamo le nostre regole di validazione
                 rules: {
                     // login - nome del campo di input da validare
@@ -148,59 +141,63 @@
 
     <div style='display: none' id='hideAll'>
 
-        <div class='nav-home fixed-top' id='nav-home' style='opacity: 0;'>
-            <nav class='navbar   '>
+        <header>
+            <div class='nav-home fixed-top' id='nav-home' style='opacity: 0;'>
+                <nav class='navbar   '>
 
-                <button class=" navbar-toggler hamburger">
-                    <i class="menuIcon material-icons bi bi-list"></i>
-                    <i class="closeIcon material-icons bi bi-x-lg"></i>
-                </button>
+                    <button class=" navbar-toggler hamburger">
+                        <i class="menuIcon material-icons bi bi-list"></i>
+                        <i class="closeIcon material-icons bi bi-x-lg"></i>
+                    </button>
 
-                <div class="col container d-flex justify-content-center">
-                    <a class='navbar-brand h-h lang' title="home" href='/home' key="HOME"></a>
-                    <a class='navbar-brand h-s lang' title="party" href='/home#party' key="PARTY"></a>
-                    <a class='navbar-brand h-s lang' title="news" href='/news' key="NEWS"></a>
-                </div>
-                <a class='navbar-brand-logo h-logo' aria-current='page' title="home" href='/home'>
-                    <img class='logo' src='../img/logo.png' alt='Logo Italia del Futuro'>
-                </a>
-
-                <div class="col container d-flex justify-content-center">
-                    <a class='navbar-brand h-p lang' title="trasparency" href='/trasparency' key="TRASPARENCY"></a>
-                    <a class='navbar-brand h-c lang' title="contacts" href='/contacts' key="CONTACTS"></a>
-                    <a class='navbar-brand h-p lang' title="subscribe" href='/subscribe' key="SUBSCRIBE"></a>
-
-                    <div class="navbar-brand dropdown h-d">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <a id="btn_en"><span class="flag-icon flag-icon-gbr"></span></a>
-                            <a id="btn_it"><span class="flag-icon flag-icon-ita"></span></a>
-                        </button>
-                        <ul class="dropdown-menu" style="background-color:#212529 ;">
-                            <li><a class="dropdown-item translate" id="en-gb" style="color:#c0c0c0"><span
-                                        class="flag-icon flag-icon-gbr"></span> English</a></li>
-                            <li><a class="dropdown-item translate" id="it-it" style="color:#c0c0c0"><span
-                                        class="flag-icon flag-icon-ita"></span> Italiano</a></li>
-                        </ul>
+                    <div class="col container d-flex justify-content-center">
+                        <a class='navbar-brand h-h lang' title="home" href='/home' key="HOME"></a>
+                        <a class='navbar-brand h-s lang' title="party" href='/home#party' key="PARTY"></a>
+                        <a class='navbar-brand h-s lang' title="news" href='/news' key="NEWS"></a>
                     </div>
-                </div>
-            </nav>
-        </div>
+                    <a class='navbar-brand-logo h-logo' aria-current='page' title="home" href='/home'>
+                        <img class='logo' src='../img/logo.png' alt='Logo Italia del Futuro'>
+                    </a>
 
-        <ul class="menu">
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="home" href='/home' key="HOME"></a>
-            </li>
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="party" href='/home#party' key="PARTY"></a>
-            </li>
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="news" href='/news' key="NEWS"></a>
-            </li>
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="trasparency" href='/trasparency'
-                    key="TRASPARENCY"></a></li>
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="contacts" href='/contacts'
-                    key="CONTACTS"></a></li>
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="subscribe" href='/subscribe'
-                    key="SUBSCRIBE"></a></li>
-        </ul>
+                    <div class="col container d-flex justify-content-center">
+                        <a class='navbar-brand h-p lang' title="trasparency" href='/trasparency' key="TRASPARENCY"></a>
+                        <a class='navbar-brand h-c lang' title="contacts" href='/contacts' key="CONTACTS"></a>
+                        <a class='navbar-brand h-p lang' title="subscribe" href='/subscribe' key="SUBSCRIBE"></a>
+
+                        <div class="navbar-brand dropdown h-d">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <a id="btn_en"><span class="flag-icon flag-icon-gbr"></span></a>
+                                <a id="btn_it"><span class="flag-icon flag-icon-ita"></span></a>
+                            </button>
+                            <ul class="dropdown-menu" style="background-color:#212529 ;">
+                                <li><a class="dropdown-item translate" id="en-gb" style="color:#c0c0c0"><span
+                                            class="flag-icon flag-icon-gbr"></span> English</a></li>
+                                <li><a class="dropdown-item translate" id="it-it" style="color:#c0c0c0"><span
+                                            class="flag-icon flag-icon-ita"></span> Italiano</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <ul class="menu">
+                <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="home" href='/home' key="HOME"></a>
+                </li>
+                <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="party" href='/home#party'
+                        key="PARTY"></a>
+                </li>
+                <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="news" href='/news' key="NEWS"></a>
+                </li>
+                <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="trasparency" href='/trasparency'
+                        key="TRASPARENCY"></a></li>
+                <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="contacts" href='/contacts'
+                        key="CONTACTS"></a></li>
+                <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="subscribe" href='/subscribe'
+                        key="SUBSCRIBE"></a></li>
+            </ul>
+
+        </header>
 
         <div class='hero'>
             <div class='hero__content reveal caption container' id='frame_1'>
@@ -317,7 +314,7 @@
                             <div class="form-group d-grid mb-2">
                                 <button type="submit" class="btn button-summit btn-lg">Iscriviti</button>
                             </div>
-                            
+
                         </form>
                     </div>
 
@@ -401,7 +398,7 @@
                         </div>
                     </form>
 
-                    
+
 
                 </div>
             </div>
