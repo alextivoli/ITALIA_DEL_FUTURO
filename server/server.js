@@ -143,6 +143,7 @@ app.post('/requests', function(req,res)
 	}
 	else if (req.body.value == "setLang")
 	{
+		console.log(req.session.lang);
 		req.session.lang = req.body.lang;
 		req.session.save();
 		res.send(req.session.lang);
