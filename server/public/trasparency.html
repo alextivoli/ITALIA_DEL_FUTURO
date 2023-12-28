@@ -17,9 +17,69 @@
     <title>NEWS</title>
 
     <script>
-        $().ready(function () {
-            // Selezione form e definizione dei metodi di validazione
-            $("#form").validate({
+           
+        function setLng(l) {
+            if (l == "it-it") {
+                document.getElementById("btn_en").style.display = "none"
+                document.getElementById("btn_it").style.display = "inherit"
+            }
+            else {
+                document.getElementById("btn_en").style.display = "inherit"
+                document.getElementById("btn_it").style.display = "none"
+            }
+        }
+
+        function manageLang()
+		{
+            $.ajax({
+                url: '/requests',
+                type: 'POST',
+                data: { value: "getLang" },
+                success: function (lng)
+				{
+					if (lng != '')
+					{
+						setLng(lng);
+						$(".lang").each(function (index, element)
+						{
+							$(this).text(arrLang[lng][$(this).attr("key")]);
+						});
+					}
+					else
+					{
+						var lang = $(this).attr("id");
+						$.ajax({
+							url: '/requests',
+							type: 'POST',
+							data: { value: "setLang", lang: ""},
+							success: function (data) 
+							{
+								window.location.reload(); //oppure aggiorno direttamente
+							}
+						});
+					}
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            manageLang();
+
+            $(".translate").click(function () {
+                var lang = $(this).attr("id");
+                $.ajax({
+                    url: '/requests',
+                    type: 'POST',
+                    data: { value: "setLang", lang: lang },
+                    success: function (data)
+					{
+                        window.location.reload(); //oppure aggiorno direttamente
+                    }
+                });
+            });
+
+             // Selezione form e definizione dei metodi di validazione
+             $("#form").validate({
                 // Definiamo le nostre regole di validazione
                 rules: {
                     // login - nome del campo di input da validare
@@ -69,62 +129,6 @@
                     form.reset();
 
                 }
-            });
-        });
-
-
-        function setLng(l) {
-            if (l == "it-it") {
-                document.getElementById("btn_en").style.display = "none"
-                document.getElementById("btn_it").style.display = "inherit"
-            }
-            else {
-                document.getElementById("btn_en").style.display = "inherit"
-                document.getElementById("btn_it").style.display = "none"
-            }
-        }
-
-        function manageLang() {
-            $.ajax({
-                url: '/session',
-                type: 'post',
-                dataType: 'json',
-                data: { "code": 1 },
-                success: function (lng) {
-                    setLng(lng);
-                    $(".lang").each(function (index, element) {
-                        $(this).text(arrLang[lng][$(this).attr("key")]);
-                    });
-                },
-                error: function (err) {
-                    if (err.status == 200) {
-                        var lng = err.responseText;
-                        setLng(lng);
-                        $(".lang").each(function (index, element) {
-                            $(this).text(arrLang[lng][$(this).attr("key")]);
-                        });
-                    }
-                }
-            });
-        }
-
-        $(document).ready(function () {
-            manageLang();
-
-            $(".translate").click(function () {
-                var lang = $(this).attr("id");
-                $.ajax({
-                    url: '/session',
-                    type: 'post',
-                    dataType: 'json',
-                    data: { "code": 2, "lang": lang },
-                    success: function (data) {
-                        window.location.reload();
-                    },
-                    error: function (err) {
-                        window.location.reload();
-                    }
-                });
             });
         });
     </script>
@@ -268,8 +272,8 @@
                     </div>
 
                     <div class="col-md-6 text-center" id="confirmationMessage">
-                        <h2 class="text-success">Grazie per esserti iscritto!</h2>
-                        <p>Riceverai presto le nostre ultime novità nella tua casella di posta.</p>
+                        <h2 class="text-success lang" key="THANKSNEWSLETTER"></h2>
+                        <p class="lang" key="THANKSNEWSLETTER2"></p>
                     </div>
                 </div>
             </div>
@@ -279,7 +283,7 @@
 
         <div class="content-contact ">
 
-            <div class="row mb-4" id="slide_form">
+            <div class="row mb-4" id="slideForm">
                 <h1 class="text-center mb-4">Contattaci</h1>
                 <div class="container slide-form d-flex justify-content-center ">
 
@@ -340,13 +344,12 @@
                                 type="submit" value="Send" class="form-control">
                         </div>
                     </form>
-
-                    <div id="confirmation_message">
-                        <h3 class="text-success">Conferma di invio!</h3>
-                        <p>Grazie per averci contattato. Riceverai una risposta al più presto.</p>
-                    </div>
-
                 </div>
+            </div>
+
+            <div id="confirmation_message">
+                <h3 class="text-success lang" key="THANKSCONTACTS"></h3>
+                <p class="lang" key="THANKSCONTACTS2"></p>
             </div>
         </div>
 

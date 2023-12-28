@@ -21,6 +21,13 @@ var arrLang = {
       "FORM7":"Send",
       "DESCPARTY": "Italia del Futuro, was born in 2017 in Maranello from an idea by Davide Nostrini and Nicolò de Vercelli. In just a few months, the young group of friends turned into one of the most important political groups in the city, so much so that in 2019, just two years after its birth, it became the fourth political force. In 2019, the project spread to the province and in four years the group elected numerous administrators, proving to be a central partner for Modena's centre-left. In 2022, Davide Nostrini was re-elected president after five years in office.",
       "THEPARTY": "The Party",
+      "SUBSCRIBENEWSLETTER":"Subscribe to our Newsletter",
+      "SUBSCRIBE2":"Register",
+      "SEND":"Send",
+      "THANKSNEWSLETTER":"Thank you for signing up!",
+      "THANKSNEWSLETTER2":"You will soon receive our latest news in your inbox.",
+      "THANKSCONTACTS":"Confirmation of sending!",
+      "THANKSCONTACTS2":"Thank you for contacting us. You will receive a reply as soon as possible.",
       
 
     },
@@ -46,6 +53,13 @@ var arrLang = {
       "FORM7":"Invia",
       "DESCPARTY": "Italia del Futuro, nasce nel 2017 a Maranello da un’idea di Davide Nostrini e Nicolò de Vercelli. Il giovane gruppo di amici in pochi mesi si trasforma in uno dei più importanti gruppi politici della città, tanto da diventare nel 2019 a soli due anni dalla nascita la quarta forza politica. Nel 2019 il progetto si diffonde in provincia e in 4 anni il gruppo elegge numerosi amministratori, dimostrando di essere un partner centrale per il centro-sinistra modenese. Nel 2022 Davide Nostrini viene rieletto Presidente dopo 5 anni di mandato.",
       "THEPARTY": "Il Partito",
+      "SUBSCRIBENEWSLETTER":"Iscriviti alla nostra Newsletter",
+      "SUBSCRIBE2":"Iscriviti",
+      "SEND":"Invia",
+      "THANKSNEWSLETTER":"Grazie per esserti iscritto!",
+      "THANKSNEWSLETTER2":"Riceverai presto le nostre ultime novità nella tua casella di posta.",
+      "THANKSCONTACTS":"Conferma di invio!",
+      "THANKSCONTACTS2":"Grazie per averci contattato. Riceverai una risposta al più presto.",
       
     }
   };
