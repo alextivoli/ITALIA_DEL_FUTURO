@@ -112,7 +112,6 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 app.post('/requests', function(req,res)
 {
 
-	console.log("---req: " , req.body.value);
 	if (req.body.value == "login")
 	{
 		var e = req.body.email;
@@ -148,7 +147,6 @@ app.post('/requests', function(req,res)
 	}
 	else if (req.body.value == "getLang")
 	{
-		console.log("GETLANG ", req.session.lang);
 		if (req.session.lang)
 		{
 			res.send(req.session.lang);
