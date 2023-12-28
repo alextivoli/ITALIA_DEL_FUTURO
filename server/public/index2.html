@@ -39,7 +39,6 @@
                 data: { value: "getLang" },
                 success: function (lng)
 				{
-                    console.log("lng ", lng);
 					if (lng != '')
 					{
 						setLng(lng);
@@ -54,7 +53,7 @@
 						$.ajax({
 							url: '/requests',
 							type: 'POST',
-							data: { value: "setLang", lang: lang},
+							data: { value: "setLang", lang: ""},
 							success: function (data) 
 							{
 								window.location.reload(); //oppure aggiorno direttamente

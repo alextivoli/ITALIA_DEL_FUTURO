@@ -24,6 +24,7 @@ const mailconn = nodemailer.createTransport({host: "smtps.aruba.it", auth: {user
 const domains = ["italiadelfuturo.it"];
 //const redisclient = redis.createClient();
 
+const defaultLang = "it-it"
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -143,8 +144,11 @@ app.post('/requests', function(req,res)
 	}
 	else if (req.body.value == "setLang")
 	{
-		console.log(req.session.lang);
-		req.session.lang = req.body.lang;
+		if(req.body.lang == ""){
+			req.session.lang = defaultLang;
+		}else{
+			req.session.lang = req.body.lang;
+		}
 		req.session.save();
 		res.send(req.session.lang);
 		
