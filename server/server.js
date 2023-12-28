@@ -148,7 +148,7 @@ app.post('/requests', function(req,res)
 	}
 	else if (req.body.value == "getLang")
 	{
-		console.log("GETLANG");
+		console.log("GETLANG ", req.session.lang);
 		if (req.session.lang)
 		{
 			res.send(req.session.lang);
