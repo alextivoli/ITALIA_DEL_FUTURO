@@ -140,6 +140,21 @@ app.post('/requests', function(req,res)
 		req.session.destroy();
 		res.send('https://italiadelfuturo.it/login/');
 	}
+	else if (req.body.value == "setLang")
+	{
+		
+	}
+	else if (req.body.value == "getLang")
+	{
+		if (req.session.lang)
+		{
+			res.send(req.session.lang);
+		}
+		else
+		{
+			res.send('');
+		}
+	}
 });
 
 //---------------------------------------------------------------------------------------------------------------
