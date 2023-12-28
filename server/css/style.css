@@ -231,6 +231,8 @@ form{
 .logo {
   width:40%; 
   height: 20%;
+  min-width:40%; 
+  min-height: 20%;
   object-fit: contain;
   position: center;
 }
@@ -1836,7 +1838,7 @@ display: none;
 
 
   .logo-index{margin-top: 20vh; max-width:60vw; height: 40%;}
-  .logo{width: 5vw; height: 5vh; scale: 3;}
+  /* .logo{width: 5vw; height: 5vh; scale: 3;} */
 
 
 
