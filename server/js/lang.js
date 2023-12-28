@@ -8,8 +8,19 @@ var arrLang = {
       "SUBSCRIBE":"SUBSCRIBE",
       "IT":"Italian",
       "EN":"English",
-      "SDP" : "Find out who we are"
-
+      "SDP" : "Find out who we are",
+      "FORM0":"Fill out the form and we will contact you!",
+      "FORM1":"Name and Surname",
+      "FORMNAME":"Name",
+      "FORMSURNAME":"Surname",
+      "FORM2":"Society",
+      "FORM3":"Email address",
+      "FORM4":"Telephone number",
+      "FORM5":"Message",
+      "FORM6":"Accept the",
+      "FORM7":"Send",
+      "DESCPARTY": "Italia del Futuro, was born in 2017 in Maranello from an idea by Davide Nostrini and Nicolò de Vercelli. In just a few months, the young group of friends turned into one of the most important political groups in the city, so much so that in 2019, just two years after its birth, it became the fourth political force. In 2019, the project spread to the province and in four years the group elected numerous administrators, proving to be a central partner for Modena's centre-left. In 2022, Davide Nostrini was re-elected president after five years in office.",
+      "THEPARTY": "The Party",
       
 
     },
@@ -22,8 +33,19 @@ var arrLang = {
       "SUBSCRIBE":"ISCRIVITI",
       "IT":"Italiano",
       "EN":"Inglese",
-      "SDP" : "Scopri chi siamo"
-      
+      "SDP" : "Scopri chi siamo",
+      "FORM0":"Compila il form e ti ricontatteremo noi!",
+      "FORM1":"Nome e Cognome",
+      "FORMNAME":"Nome",
+      "FORMSURNAME":"Cognome",
+      "FORM2":"Società",
+      "FORM3":"Indirizzo email",
+      "FORM4":"Telefono",
+      "FORM5":"Messaggio",
+      "FORM6":"Accetta i",
+      "FORM7":"Invia",
+      "DESCPARTY": "Italia del Futuro, nasce nel 2017 a Maranello da un’idea di Davide Nostrini e Nicolò de Vercelli. Il giovane gruppo di amici in pochi mesi si trasforma in uno dei più importanti gruppi politici della città, tanto da diventare nel 2019 a soli due anni dalla nascita la quarta forza politica. Nel 2019 il progetto si diffonde in provincia e in 4 anni il gruppo elegge numerosi amministratori, dimostrando di essere un partner centrale per il centro-sinistra modenese. Nel 2022 Davide Nostrini viene rieletto Presidente dopo 5 anni di mandato.",
+      "THEPARTY": "Il Partito",
       
     }
   };

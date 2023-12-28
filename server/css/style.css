@@ -40,14 +40,6 @@ body::-webkit-scrollbar{
 .navbar-toggler{display: none;}
 
 
-/* ! header */
-
-header {
-  background-color: transparent; /* Set the background color of the header to transparent */
-  padding: 20px;
-}
-
-
 /* ! Hero */
 
 .hero{
