@@ -17,60 +17,7 @@
     <title>Idf - Homepage</title>
 
     <script>
-        $().ready(function () {
-            // Selezione form e definizione dei metodi di validazione
-            $("#form").validate({
-                // Definiamo le nostre regole di validazione
-                rules: {
-                    // login - nome del campo di input da validare
-                    name: {
-                        required: true
-                    },
-                    emailAddress: {
-                        required: true,
-                        email: true
-                    },
-                    number: {
-                        required: true,
-                        minlength: 10
-                    },
-                    message: {
-                        required: true
-                    },
-                    invalidCheck: {
-                        required: true
-                    }
-                },
-                messages: {
-                    name: "Inserisci un nome valido",
-                    emailAddress: "Inserisci un indirizzo mail valido",
-                    number: {
-                        required: "Inserisci un numero di telefono",
-                        minlength: "Il numero deve essere lunga minimo 10 cifre"
-                    },
-                    message: "Inserisci un messaggio di richiesta",
-                    invalidCheck: "Accetta i termini e la privacy policy"
-                },
-                // Settiamo il submit handler per la form
-                submitHandler: function (form) {
-                    var fields = $('#form').serializeArray();
-                    // form.submit();
-                    $.ajax(
-                        {
-                            url: '/formRequest',
-                            type: 'post',
-                            dataType: 'json',
-                            data: fields,
-                            success: function (data) {
-                                console.log(data);
-                            }
-                        });
-
-                    form.reset();
-
-                }
-            });
-        });
+           
 
 
         function setLng(l) {
@@ -122,7 +69,6 @@
 
             $(".translate").click(function () {
                 var lang = $(this).attr("id");
-                //lang = 'it-it'
                 $.ajax({
                     url: '/requests',
                     type: 'POST',
@@ -132,6 +78,59 @@
                         window.location.reload(); //oppure aggiorno direttamente
                     }
                 });
+            });
+
+             // Selezione form e definizione dei metodi di validazione
+             $("#form").validate({
+                // Definiamo le nostre regole di validazione
+                rules: {
+                    // login - nome del campo di input da validare
+                    name: {
+                        required: true
+                    },
+                    emailAddress: {
+                        required: true,
+                        email: true
+                    },
+                    number: {
+                        required: true,
+                        minlength: 10
+                    },
+                    message: {
+                        required: true
+                    },
+                    invalidCheck: {
+                        required: true
+                    }
+                },
+                messages: {
+                    name: "Inserisci un nome valido",
+                    emailAddress: "Inserisci un indirizzo mail valido",
+                    number: {
+                        required: "Inserisci un numero di telefono",
+                        minlength: "Il numero deve essere lunga minimo 10 cifre"
+                    },
+                    message: "Inserisci un messaggio di richiesta",
+                    invalidCheck: "Accetta i termini e la privacy policy"
+                },
+                // Settiamo il submit handler per la form
+                submitHandler: function (form) {
+                    var fields = $('#form').serializeArray();
+                    // form.submit();
+                    $.ajax(
+                        {
+                            url: '/formRequest',
+                            type: 'post',
+                            dataType: 'json',
+                            data: fields,
+                            success: function (data) {
+                                console.log(data);
+                            }
+                        });
+
+                    form.reset();
+
+                }
             });
         });
     </script>
