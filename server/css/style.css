@@ -1983,4 +1983,9 @@ background-size: contain; */
     width: auto;
   }
 
+
+  .slide-form {
+    width: 90vw;
+  }
+
 }
