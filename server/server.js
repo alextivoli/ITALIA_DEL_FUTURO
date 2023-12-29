@@ -23,7 +23,6 @@ const storage = multer.diskStorage({destination: (req, file, cb) => {const perco
 const mailconn = nodemailer.createTransport({host: "smtps.aruba.it", auth: {user: 'noreply@italiadelfuturo.it', pass: 'Idfdn2023'}, port: 465});
 const domains = ["italiadelfuturo.it"];
 //const redisclient = redis.createClient();
-
 const defaultLang = "it-it"
 
 app.use(bodyParser.json());
@@ -145,14 +144,16 @@ app.post('/requests', function(req,res)
 	}
 	else if (req.body.value == "setLang")
 	{
-		if(req.body.lang == ""){
+		if(req.body.lang == "")
+		{
 			req.session.lang = defaultLang;
-		}else{
+		}
+		else
+		{
 			req.session.lang = req.body.lang;
 		}
 		req.session.save();
-		res.send(req.session.lang);
-		
+		res.send(req.session.lang);	
 	}
 	else if (req.body.value == "getLang")
 	{
