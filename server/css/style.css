@@ -131,7 +131,7 @@ body::-webkit-scrollbar {
 .content-newsletter {
 
   position: relative;
-  height: 50vh;
+  height: auto;
   display: grid;
   width: 100%;
   align-items: center;
@@ -1980,7 +1980,7 @@ background-size: contain; */
   }
 
   .form{
-    width: 90%;
+    width: 90% !important;
   }
 
 
