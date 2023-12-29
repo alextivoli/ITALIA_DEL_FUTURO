@@ -1969,6 +1969,10 @@ background-size: contain; */
     background: #212529;
   }
 
+  .form{
+    width: 90% ;
+  }
+
 }
 
 @media (max-width: 800px) {
@@ -1979,9 +1983,7 @@ background-size: contain; */
     min-height: 20%;
   }
 
-  .form{
-    width: 90% !important;
-  }
+  
 
 
   .slide-form {
