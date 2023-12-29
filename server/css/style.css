@@ -1970,7 +1970,7 @@ background-size: contain; */
   }
 
   .form{
-    width: 90% ;
+    width: 90vw !important;
   }
 
 }
