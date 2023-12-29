@@ -1915,6 +1915,13 @@ background-size: contain; */
     height: 40%;
   }
 
+  .logo {
+    width: 60%;
+    height: 30%;
+    min-width: 40%;
+    min-height: 20%;
+  }
+
   .content-bio {
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.222), rgba(255, 255, 255, 0.459)), url('../img/background/italy1.png') center no-repeat;
     display: grid;
