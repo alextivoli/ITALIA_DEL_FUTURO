@@ -254,20 +254,20 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="content-newsletter">
             <div class="container mt-3 mb-3">
                 <div class="row justify-content-center">
                     <div class="col-md-6" id="newsletterForm">
                         <h1 class="text-center mb-4">Iscriviti alla nostra Newsletter</h1>
-                        <form id="signupForm">
+                        <form class="form" id="signupForm">
                             <div class="form-group mb-2">
                                 <label for="nome" class=" text_contact lang" key="FORMNAME"></label>
                                 <input type="text" class="form-control" id="nome" placeholder="Inserisci il tuo nome"
                                     required>
                             </div>
                             <div class="form-group mb-2">
-                                <label for="surname"  class=" text_contact lang" key="FORMSURNAME"></label>
+                                <label for="surname" class=" text_contact lang" key="FORMSURNAME"></label>
                                 <input type="text" class="form-control" id="surname"
                                     placeholder="Inserisci il tuo cognome" required>
                             </div>
@@ -279,7 +279,7 @@
                             <div class="form-group d-grid mb-2">
                                 <button type="submit" class="btn button-summit btn-lg">Iscriviti</button>
                             </div>
-                            
+
                         </form>
                     </div>
 
@@ -294,12 +294,11 @@
 
 
         <div class="content-contact ">
-
             <div class="row mb-4" id="slideForm">
                 <h1 class="text-center mb-4">Contattaci</h1>
                 <div class="container slide-form d-flex justify-content-center ">
 
-                    <form action="#" id="form">
+                    <form class="form" action="#" id="form">
                         <div class="mb-3 mt-3">
                             <p style="color: white; font-size: 3vh"> <b class="lang" key="FORM0"></b>
                             </p>
@@ -357,7 +356,7 @@
                         </div>
                     </form>
 
-                    
+
 
                 </div>
             </div>
@@ -369,7 +368,6 @@
         </div>
 
 
-
         <!-- Footer -->
         <footer class="text-center text-lg-left">
             <div class="container">
@@ -378,15 +376,14 @@
                     <div class="col-lg-4 mb-4 mb-lg-0">
                         <h5 class="text-uppercase">Menu</h5>
                         <ul class="list-unstyled mb-0">
-                            <li>
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">Blog</a>
-                            </li>
-                            <li>
-                                <a href="#">Contatti</a>
-                            </li>
+                            <li><a  title="home" href='/home' ><p class="lang" key="HOME"></p></a></li>
+                            <li><a  title="party" href='/home#party' ><p class="lang" key="PARTY"></p></a></li>
+                            <li><a  title="news" href='/news' ><p class="lang" key="NEWS"></p></a></li>
+                        </ul>
+                        <ul class="list-unstyled mb-0">
+                            <li><a  title="trasparency" href='/trasparency' ><p class="lang" key="TRASPARENCY"></p></a></li>
+                            <li><a  title="contacts" href='/contacts' ><p class="lang" key="CONTACTS"></p></a></li>
+                            <li><a  title="subscribe" href='/subscribe' ><p class="lang" key="SUBSCRIBE"></p></a></li>
                         </ul>
                     </div>
 
