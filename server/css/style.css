@@ -64,6 +64,31 @@ body::-webkit-scrollbar {
   opacity: 0.4
 }
 
+/* ! Hero contact */
+
+.hero-contact {
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-size: cover;
+  overflow: hidden;
+  background-color: #2daae2;
+}
+
+.hero-contact:after {
+  content: ' ';
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  opacity: 0.4
+}
+
 
 /* ! Hero subscribe */
 
@@ -332,6 +357,12 @@ footer {
   font-size: xx-large;
   font-weight: 40;
   text-align: center;
+}
+
+.btn_contact {
+  color: #000000cc;
+  text-align: center;
+  border: none;
 }
 
 /* ! card-trasparency */
@@ -1758,11 +1789,7 @@ background-size: contain; */
   text-align: center;
 }
 
-.btn_contact {
-  color: #000000cc;
-  text-align: center;
-  border: none;
-}
+
 
 .btn_contact_st {
   color: #faf6f6cc;
