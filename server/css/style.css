@@ -250,6 +250,7 @@ form {
   min-height: 20%;
   object-fit: contain;
   position: center;
+  scale: 3;
 }
 
 /* ! circle-container */
