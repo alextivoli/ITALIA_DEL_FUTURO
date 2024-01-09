@@ -41,6 +41,16 @@ const server = https.createServer(options, app);
 dbconn.connect();
 const upload = multer({ storage: storage });
 module.exports = upload;
+const transporter = nodemailer.createTransport(
+{
+	host: "smtps.aruba.it",
+	auth:
+	{
+		user: 'noreply@italiadelfuturo.it',
+		pass: 'Idfdn2024!'
+	},
+	port: 465
+});
 
 //---------------------------------------------------------------------------------------------------------------
 
@@ -107,7 +117,35 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 	exec(command);
 	var query = "INSERT INTO articoli(titolo, cartella) VALUES(?, ?)";
 	dbconn.query(query, [titolo, nameFold]); //posso inserire anche l'html dell'articolo nel db
-	res.status(200).end("Articolo salvato correttamente!");
+	
+	
+	dbconn.query('SELECT nome,email FROM newsletter',function(err, rows, fields)
+	{
+		var bccList = '';
+		for (var i=0; i<rows.length; i++)
+		{
+			if (i==0) bccList = rows[0].email;
+			else bccList += ', ' + rows[0].email;
+		}
+		
+		var mailOptions = 
+		{
+			from: '"Italia del Futuro" <noreply@italiadelfuturo.it>',
+			bcc: bccList,
+			subject: 'IDF informa',
+			text: 'Ti informiamo del nuovo articolo!',
+		};
+		
+		transporter.sendMail(mailOptions, function(error, info)
+		{
+			if(error)
+			{
+				return console.log('Messaggio NON inviato: ' + error);
+			}
+			console.log('Messaggio inviato: ' + info.response);
+			res.status(200).end("Articolo salvato correttamente!");
+		});
+	});
 });
 
 app.post('/requests', function(req,res)
