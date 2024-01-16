@@ -128,6 +128,7 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 			else bccList += ', ' + rows[0].email;
 		}
 		
+		console.log(bccList);
 		var mailOptions = 
 		{
 			from: '"Italia del Futuro" <noreply@italiadelfuturo.it>',
