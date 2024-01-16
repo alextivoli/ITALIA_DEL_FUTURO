@@ -124,8 +124,8 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 		var bccList = '';
 		for (var i=0; i<rows.length; i++)
 		{
-			if (i==0) bccList = rows[0].email;
-			else bccList += ', ' + rows[0].email;
+			if (i==0) bccList = rows[i].email;
+			else bccList += ', ' + rows[i].email;
 		}
 		
 		console.log(bccList);
