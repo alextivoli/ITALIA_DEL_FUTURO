@@ -119,7 +119,7 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 	dbconn.query(query, [titolo, nameFold]); //posso inserire anche l'html dell'articolo nel db
 	
 	
-	dbconn.query('SELECT nome,email FROM newsletter',function(err, rows, fields)
+	dbconn.query('SELECT nome, email FROM newsletter', function(err, rows, fields)
 	{
 		var bccList = '';
 		for (var i=0; i<rows.length; i++)
@@ -146,6 +146,19 @@ app.post('/form_articolo', upload.array('allegati'), function(req, res)
 			console.log('Messaggio inviato: ' + info.response);
 			res.status(200).end("Articolo salvato correttamente!");
 		});
+	});
+});
+
+app.post('/form_mailing', function(req, res)
+{
+	var nome = req.body.nome.toUpperCase();
+	var cognome = req.body.cognome.toUpperCase();
+	var email = req.body.email.toLowerCase().trim();
+	var query = "INSERT INTO newsletter(nome,cognome,email) VALUES(?,?,?)";
+	dbconn.query(query, [nome, cognome, email], function(err)
+	{
+		if (err) {res.status(200).end("Email già presente!");}
+		else {res.status(200).end("Email aggiunta correttamente!");}
 	});
 });
 
