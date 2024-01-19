@@ -307,7 +307,7 @@
                                     required>
                             </div>
                             <div class="form-group d-grid mb-2">
-                                <button type="submit" class="btn button-summit btn-lg lang" key="SUBSCRIBE2"></button>
+                                <button type="button" onclick="validateForm()" class="btn button-summit btn-lg lang" key="SUBSCRIBE2"></button>
                             </div>
 
                         </form>
@@ -547,12 +547,18 @@
                     menuIcon.style.display = "none";
                 }
             }
+			
+			function validateForm()
+			{
+				//eventually check something
+				document.getElementById('signupForm').submit();
+			}
 
             hamburger.addEventListener("click", toggleMenu);
 
 
             // NewsLetter
-            /*document.getElementById('signupForm').addEventListener('submit', function (event) {
+            /*document.getElementById('signupForm').addEventListener('click', function (event) {
                 event.preventDefault();
 
                 document.getElementById('newsletterForm').style.display = 'none';
