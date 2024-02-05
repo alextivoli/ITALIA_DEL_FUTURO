@@ -204,6 +204,22 @@ body::-webkit-scrollbar {
   font-weight: bold;
 }
 
+/* ! Content-page-trasparency */
+
+.content-page-trasparency{
+  
+  position: relative;
+  height: auto;
+  display: grid;
+  width: 100%;
+  align-items: center;
+  background-size: cover;
+  overflow: hidden;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-bottom: 10vw;
+}
+
 
 
 /* ! Content-contact */
