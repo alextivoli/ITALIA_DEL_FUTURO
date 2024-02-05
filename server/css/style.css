@@ -144,7 +144,9 @@ body::-webkit-scrollbar {
   align-items: center;
   background-size: cover;
   overflow: hidden;
-  padding: 10vw;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-bottom: 10vw;
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.222), rgba(255, 255, 255, 0.459)), url('../img/background/italy1.png') right no-repeat;
 
 }
