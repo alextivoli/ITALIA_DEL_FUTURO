@@ -14,10 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://italiadelfuturo.it/img/logo.ico" />
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-    <title>NEWS</title>
+    <title>Idf - Homepage</title>
 
     <script>
-           
+
         function setLng(l) {
             if (l == "it-it") {
                 document.getElementById("btn_en").style.display = "none"
@@ -29,35 +29,29 @@
             }
         }
 
-        function manageLang()
-		{
+        function manageLang() {
             $.ajax({
                 url: '/requests',
                 type: 'POST',
                 data: { value: "getLang" },
-                success: function (lng)
-				{
-					if (lng != '')
-					{
-						setLng(lng);
-						$(".lang").each(function (index, element)
-						{
-							$(this).text(arrLang[lng][$(this).attr("key")]);
-						});
-					}
-					else
-					{
-						var lang = $(this).attr("id");
-						$.ajax({
-							url: '/requests',
-							type: 'POST',
-							data: { value: "setLang", lang: ""},
-							success: function (data) 
-							{
-								window.location.reload(); //oppure aggiorno direttamente
-							}
-						});
-					}
+                success: function (lng) {
+                    if (lng != '') {
+                        setLng(lng);
+                        $(".lang").each(function (index, element) {
+                            $(this).text(arrLang[lng][$(this).attr("key")]);
+                        });
+                    }
+                    else {
+                        var lang = $(this).attr("id");
+                        $.ajax({
+                            url: '/requests',
+                            type: 'POST',
+                            data: { value: "setLang", lang: "" },
+                            success: function (data) {
+                                window.location.reload(); //oppure aggiorno direttamente
+                            }
+                        });
+                    }
                 }
             });
         }
@@ -71,15 +65,14 @@
                     url: '/requests',
                     type: 'POST',
                     data: { value: "setLang", lang: lang },
-                    success: function (data)
-					{
+                    success: function (data) {
                         window.location.reload(); //oppure aggiorno direttamente
                     }
                 });
             });
 
-             // Selezione form e definizione dei metodi di validazione
-             $("#form").validate({
+            // Selezione form e definizione dei metodi di validazione
+            $("#form").validate({
                 // Definiamo le nostre regole di validazione
                 rules: {
                     // login - nome del campo di input da validare
@@ -137,8 +130,15 @@
 
 <body>
     <div id="loading_screen">
-        <div class="d-flex justify-content-center">
-            <div class="spinner-border " role="status" style="margin-top: 50vh">
+        <div style="display: grid; align-items: center; justify-content: center;">
+            <div class="row">
+                <img class='logo' src='../img/logo.png' alt='Logo Italia del Futuro'>
+            </div>
+            <div class="row">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status" style="margin-top: 50vh;">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -157,6 +157,7 @@
                     <a class='navbar-brand h-h lang' title="home" href='/home' key="HOME"></a>
                     <a class='navbar-brand h-s lang' title="party" href='/home#party' key="PARTY"></a>
                     <a class='navbar-brand h-s lang' title="news" href='/news' key="NEWS"></a>
+                    <a class='navbar-brand h-s lang' title="segretariat" href='/segretariat' key="SECRETARIAT"></a>
                 </div>
                 <a class='navbar-brand-logo h-logo' aria-current='page' title="home" href='/home'>
                     <img class='logo' src='../img/logo.png' alt='Logo Italia del Futuro'>
@@ -187,9 +188,12 @@
         <ul class="menu">
             <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="home" href='/home' key="HOME"></a>
             </li>
-            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="party" href='/home#party' key="PARTY"></a>
+            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="party" href='/home#party'
+                    key="PARTY"></a>
             </li>
             <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="news" href='/news' key="NEWS"></a>
+            </li>
+            <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="segretariat" href='/segretariat' key="SECRETARIAT"></a>
             </li>
             <li><a class='btn  btn-block m-0 lang' style='color: #c0c0c0;' title="trasparency" href='/trasparency'
                     key="TRASPARENCY"></a></li>
@@ -199,106 +203,37 @@
                     key="SUBSCRIBE"></a></li>
         </ul>
 
-        <!-- <div class='hero'>
-            <div class='hero__content reveal caption container' id='frame_1'>
 
-                <div class="container">
-                   
-                    <div class="card-container">
+        <div class="container content-segretariat">
                     
-                        <div class="card-body">
-                          <div class="card-title">Titolo del Documento 2</div>
-                          <button class="download-button">
-                            <i class="bi bi-cloud-download"></i> Scarica PDF
-                          </button>
-                        </div>
-                    </div>
-
-                    <div class="card-container">
-                        
-                        <div class="card-body">
-                          <div class="card-title">Titolo del Documento 2</div>
-                          <button class="download-button">
-                            <i class="bi bi-cloud-download"></i> Scarica PDF
-                          </button>
-                        </div>
-                    </div>
-
-                    <div class="card-container">
-                        
-                        <div class="card-body">
-                          <div class="card-title">Titolo del Documento 2</div>
-                          <button class="download-button">
-                            <i class="bi bi-cloud-download"></i> Scarica PDF
-                          </button>
-                        </div>
-                    </div>
-                      
-                </div>
-            </div>
-        </div> -->
-
-        <div class="container content-trasparency">
-
-            <div class="row">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                      <a class="nav-link active lang" aria-current="page" href="#candidates" key="CANDIDATES"></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link lang" href="#budget" key="BUDGET"></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link lang" href="#fundraising" key="FUNDRAISING"></a>
-                    </li>
-                  </ul>
-            </div>
-
-            <div class="row" id="candidates">
-                <p>candidates</p>
-
-            </div>
-
-            <div class="row" id="budget">
-                <p>candidates 2</p>
-
-            </div>
-
-            <div class="row" id="fundraising">
-
-                <p>candidates 3</p>
-            </div>
-
-           
-
-
-
-
         </div>
+
+
+
 
         <div class="content-newsletter">
             <div class="container mt-3 mb-3">
                 <div class="row justify-content-center">
                     <div class="col-md-6" id="newsletterForm">
                         <h1 class="text-center mb-4 lang" key="SUBSCRIBENEWSLETTER"></h1>
-                        <form class="form" id="signupForm">
+                        <form class="form" id="signupForm" method="post" action="/form_mailing">
                             <div class="form-group mb-2">
                                 <label for="nome" class=" text_contact lang" key="FORMNAME"></label>
-                                <input type="text" class="form-control" id="nome" placeholder="Inserisci il tuo nome"
+                                <input type="text" class="form-control" name="nome" id="nome" placeholder="Inserisci il tuo nome"
                                     required>
                             </div>
                             <div class="form-group mb-2">
                                 <label for="surname" class=" text_contact lang" key="FORMSURNAME"></label>
-                                <input type="text" class="form-control" id="surname"
+                                <input type="text" class="form-control" name="surname" id="surname"
                                     placeholder="Inserisci il tuo cognome" required>
                             </div>
                             <div class="form-group mb-2">
                                 <label for="email" class=" text_contact lang" key="FORM3"></label>
-                                <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email"
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Inserisci la tua email"
                                     required>
                             </div>
                             <div class="form-group d-grid mb-2">
-                                <button type="submit" class="btn button-summit btn-lg lang" key="SUBSCRIBE2"></button>
+                                <button type="button" onclick="validateForm()" class="btn button-summit btn-lg lang" key="SUBSCRIBE2"></button>
                             </div>
 
                         </form>
@@ -312,7 +247,6 @@
             </div>
 
         </div>
-
 
         <div class="content-contact ">
             <div class="row mb-4" id="slideForm">
@@ -371,7 +305,8 @@
                         </div>
 
                         <div class="form-group d-grid mb-2">
-                            <button name="formBt" id="formBt" type="submit" class="btn button-summit btn-lg form-control lang" key="SEND"></button>
+                            <button name="formBt" id="formBt" type="submit"
+                                class="btn button-summit btn-lg form-control lang" key="SEND"></button>
                         </div>
                     </form>
                 </div>
@@ -387,72 +322,84 @@
         <!-- Footer -->
         <footer class="text-center text-lg-left" style="background-color: #2ca9e1;">
             <div class="row d-flex justify-content-center p-4" style="background-color: #ffffff;">
-                    <!-- Menu -->
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="row">
-                            <h5 class="text-uppercase">Menu</h5>
+                <!-- Menu -->
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="row">
+                        <h5 class="text-uppercase">Menu</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <ul class="list-unstyled mb-0">
+                                <li><a title="home" href='/home' style="color: #000000;">
+                                        <p class="lang" key="HOME"></p>
+                                    </a></li>
+                                <li><a title="party" href='/home#party' style="color: #000000;">
+                                        <p class="lang" key="PARTY"></p>
+                                    </a></li>
+                                <li><a title="news" href='/news' style="color: #000000;">
+                                        <p class="lang" key="NEWS"></p>
+                                    </a></li>
+                            </ul>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a  title="home" href='/home' style="color: #000000;" ><p class="lang" key="HOME"></p></a></li>
-                                    <li><a  title="party" href='/home#party' style="color: #000000;" ><p class="lang" key="PARTY"></p></a></li>
-                                    <li><a  title="news" href='/news' style="color: #000000;" ><p class="lang" key="NEWS"></p></a></li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a  title="trasparency" href='/trasparency' style="color: #000000;" ><p class="lang" key="TRASPARENCY"></p></a></li>
-                                    <li><a  title="contacts" href='/contacts' style="color: #000000;" ><p class="lang" key="CONTACTS"></p></a></li>
-                                    <li><a  title="subscribe" href='/subscribe' style="color: #000000;" ><p class="lang" key="SUBSCRIBE"></p></a></li>
-                                </ul>
-                            </div>
+                        <div class="col">
+                            <ul class="list-unstyled mb-0">
+                                <li><a title="trasparency" href='/trasparency' style="color: #000000;">
+                                        <p class="lang" key="TRASPARENCY"></p>
+                                    </a></li>
+                                <li><a title="contacts" href='/contacts' style="color: #000000;">
+                                        <p class="lang" key="CONTACTS"></p>
+                                    </a></li>
+                                <li><a title="subscribe" href='/subscribe' style="color: #000000;">
+                                        <p class="lang" key="SUBSCRIBE"></p>
+                                    </a></li>
+                            </ul>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-lg-4 mb-4 mb-lg-0" style="display: flex; align-items: center; justify-content: center;">
-                        <img class='logo-footer' src='../img/logo.png' alt='Logo Italia del Futuro'>
-                    </div>
+                <div class="col-lg-4 mb-4 mb-lg-0" style="display: flex; align-items: center; justify-content: center;">
+                    <img class='logo-footer' src='../img/logo.png' alt='Logo Italia del Futuro'>
+                </div>
 
 
-                    <!-- Contatti -->
-                    <div class="col-lg-4 mb-4 mb-lg-0">
-                        <h5 class="text-uppercase lang" key="CONTACTS" ></h5>
-                        <a class='btn  m-1' style='border: none;' title="telefono"
-                            href='tel:+393467448200' role='button'>
-                            <i class='bi bi-telephone'> 3467448200</i>
-                        </a>
-                        <a class='btn  m-1' style='border: none;' title="mail"
-                            href='mailto:italiadelfuturoweb@gmail.com' role='button'>
-                            <i class='bi bi-envelope'> italiadelfuturoweb@gmail.com</i>
-                        </a>
-                        <p>
-                            <i class='bi bi-house'></i><strong class="lang" key="SL"></strong> Via degli Ulivi 9, Maranello, Mo, 41053
-                        </p>
-                        <p>
-                            <strong class="lang" key="CF" ></strong> 94218810367
-                        </p>
+                <!-- Contatti -->
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="text-uppercase lang" key="CONTACTS"></h5>
+                    <a class='btn  m-1' style='border: none;' title="telefono" href='tel:+393467448200' role='button'>
+                        <i class='bi bi-telephone'> 3467448200</i>
+                    </a>
+                    <a class='btn  m-1' style='border: none;' title="mail" href='mailto:italiadelfuturoweb@gmail.com'
+                        role='button'>
+                        <i class='bi bi-envelope'> italiadelfuturoweb@gmail.com</i>
+                    </a>
+                    <p>
+                        <i class='bi bi-house'></i><strong class="lang" key="SL"></strong> Via degli Ulivi 9, Maranello,
+                        Mo, 41053
+                    </p>
+                    <p>
+                        <strong class="lang" key="CF"></strong> 94218810367
+                    </p>
 
-                        <h5 class="text-uppercase lang mt-4" key="SOCIAL" ></h5>
-                        <a class='btn' style='border: none;' title="facebook"
-                            href='https://www.facebook.com/italiadelfuturoweb/?locale=it_IT' role='button'>
-                            <i class='bi bi-facebook'> Italia Del Futuro</i>
-                        </a>
-                        <a class='btn  m-1' style='border: none;' title="instagram"
-                            href='https://www.instagram.com/italiadelfuturo/' role='button'>
-                            <i class='bi bi-instagram'> @italiadelfuturo</i>
-                        </a>
-                        <a class='btn m-1' style='border: none;' title="whatsapp"
-                            href='whatsapp://send?phone=393467448200text=' role='button'>
-                            <i class='bi bi-whatsapp'> 3467448200</i>
-                        </a>
-                    </div>
+                    <h5 class="text-uppercase lang mt-4" key="SOCIAL"></h5>
+                    <a class='btn' style='border: none;' title="facebook"
+                        href='https://www.facebook.com/italiadelfuturoweb/?locale=it_IT' role='button'>
+                        <i class='bi bi-facebook'> Italia Del Futuro</i>
+                    </a>
+                    <a class='btn  m-1' style='border: none;' title="instagram"
+                        href='https://www.instagram.com/italiadelfuturo/' role='button'>
+                        <i class='bi bi-instagram'> @italiadelfuturo</i>
+                    </a>
+                    <a class='btn m-1' style='border: none;' title="whatsapp"
+                        href='whatsapp://send?phone=393467448200text=' role='button'>
+                        <i class='bi bi-whatsapp'> 3467448200</i>
+                    </a>
+                </div>
             </div>
 
             <div class='text-center p-3' style='background-color: #2ca9e1; width: 100vw;'>
                 © 2024 Copyright -
                 <span class='text-white lang' key="FT1"></span>
-                <span style="color: #000000;" > C.F. 94218810367 </span>
+                <span style="color: #000000;"> C.F. 94218810367 </span>
                 <a href="https://www.iubenda.com/privacy-policy/"
                     class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe "
                     title="Privacy Policy " style="color: #000000;">Privacy
@@ -460,8 +407,8 @@
                 <script
                     type="text/javascript">(function (w, d) { var loader = function () { var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s, tag); }; if (w.addEventListener) { w.addEventListener("load", loader, false); } else if (w.attachEvent) { w.attachEvent("onload", loader); } else { w.onload = loader; } })(window, document);</script>
                 <a href="https://www.iubenda.com/privacy-policy//cookie-policy"
-                    class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy "
-                    style="color: #000000;">Cookie
+                    class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe "
+                    title="Cookie Policy " style="color: #000000;">Cookie
                     Policy</a>
                 <script
                     type="text/javascript">(function (w, d) { var loader = function () { var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s, tag); }; if (w.addEventListener) { w.addEventListener("load", loader, false); } else if (w.attachEvent) { w.attachEvent("onload", loader); } else { w.onload = loader; } })(window, document);</script>
@@ -519,23 +466,29 @@
                     menuIcon.style.display = "none";
                 }
             }
+			
+			function validateForm()
+			{
+				//eventually check something
+				document.getElementById('signupForm').submit();
+			}
 
             hamburger.addEventListener("click", toggleMenu);
 
 
             // NewsLetter
-            document.getElementById('signupForm').addEventListener('submit', function (event) {
+            /*document.getElementById('signupForm').addEventListener('click', function (event) {
                 event.preventDefault();
 
                 document.getElementById('newsletterForm').style.display = 'none';
                 document.getElementById('confirmationMessage').style.display = 'block';
-            });
+            });*/
 
 
             // Contact
             document.getElementById('form').addEventListener('submit', function (event) {
                 event.preventDefault();
-                document.getElementById('slide_form').style.display = 'none';
+                document.getElementById('slideForm').style.display = 'none';
                 document.getElementById('confirmation_message').style.display = 'block';
             });
 

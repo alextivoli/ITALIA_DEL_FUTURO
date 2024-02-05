@@ -34,6 +34,9 @@ var arrLang = {
       "THANKSNEWSLETTER2":"You will soon receive our latest news in your inbox.",
       "THANKSCONTACTS":"Confirmation of sending!",
       "THANKSCONTACTS2":"Thank you for contacting us. You will receive a reply as soon as possible.",
+      "CANDIDATES":"CANDIDATES",
+      "BUDGET":"BUDGET",
+      "FUNDRAISING":"FUNDRAISING"
       
 
     },
@@ -72,6 +75,9 @@ var arrLang = {
       "THANKSNEWSLETTER2":"Riceverai presto le nostre ultime novità nella tua casella di posta.",
       "THANKSCONTACTS":"Conferma di invio!",
       "THANKSCONTACTS2":"Grazie per averci contattato. Riceverai una risposta al più presto.",
+      "CANDIDATES":"CANDIDATI",
+      "BUDGET":"BILANCIO",
+      "FUNDRAISING":"RACCOLTE FONDI"
       
     }
   };
