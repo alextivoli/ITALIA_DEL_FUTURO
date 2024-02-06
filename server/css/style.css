@@ -325,6 +325,10 @@ form {
   overflow: hidden;
 }
 
+.opaque {
+  opacity: 0.5; /* Imposta l'opacità desiderata */
+}
+
 /* ! Footer */
 
 footer {
