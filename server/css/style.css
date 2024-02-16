@@ -230,6 +230,7 @@ body::-webkit-scrollbar {
   background-size: cover;
   overflow: hidden;
   padding: 10vw;
+  background-color: #9DC7DA;
 }
 
 
