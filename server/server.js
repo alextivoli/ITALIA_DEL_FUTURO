@@ -75,6 +75,7 @@ app.get('/:det', function(req,res)
 		else if (det == "news") res.sendFile(__dirname + "/public/news.html");
 		else if (det == "subscribe") res.sendFile(__dirname + "/public/subscribe.html");
 		else if (det == "trasparency") res.sendFile(__dirname + "/public/trasparency.html");
+		else if (det == "segretariat") res.sendFile(__dirname + "/public/segretariat.html");
 		else if (det == "contacts") res.sendFile(__dirname + "/public/contact.html");
 		else if (det == "sitemap") res.sendFile(__dirname + "/sitemap.html");
 		else if (det == "myarea") res.sendFile(__dirname + "/public/myarea.html");
