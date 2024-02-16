@@ -373,6 +373,10 @@ footer {
   font-weight: 400;
 }
 
+.text-card-title{
+
+}
+
 /* ! Loading-screen */
 
 #loading_screen {
@@ -430,8 +434,9 @@ footer {
   margin-bottom: 10px;
 }
 
-.card-segretariat{
-  background-color: #2ca9e1;
+.card-title-segretariat{
+  font-weight: bold;
+  margin-bottom: 10px;
   
 }
 
