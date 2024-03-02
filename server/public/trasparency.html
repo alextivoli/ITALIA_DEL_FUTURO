@@ -22,6 +22,7 @@
             $.ajax({
                 url: "/requests", type: "post", data: { val: "candidati" }, success: function (result) {
                     $("#candidati").html(result);
+                    console.log(result);
                 }
             });
 
