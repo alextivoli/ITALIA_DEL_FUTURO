@@ -36,7 +36,15 @@ var arrLang = {
       "THANKSCONTACTS2":"Thank you for contacting us. You will receive a reply as soon as possible.",
       "CANDIDATES":"CANDIDATES",
       "BUDGET":"BUDGET",
-      "FUNDRAISING":"FUNDRAISING"
+      "FUNDRAISING":"FUNDRAISING",
+      "NOME": "Name",
+      "COGNOME": "Surname",
+      "CV": "Resume",
+      "CASELLGIUD": "Criminal Records",
+      "ANNO": "Year",
+      "BILANCIO": "Financial Statement",
+      "RACCOLTA": "Collection Name",
+      "DOCRACCOLT": "Fundraising Document"
       
 
     },
@@ -77,7 +85,18 @@ var arrLang = {
       "THANKSCONTACTS2":"Grazie per averci contattato. Riceverai una risposta al più presto.",
       "CANDIDATES":"CANDIDATI",
       "BUDGET":"BILANCIO",
-      "FUNDRAISING":"RACCOLTE FONDI"
+      "FUNDRAISING":"RACCOLTE FONDI",
+      "NOME":"Nome",
+      "COGNOME":"Cognome",
+      "CV":"Curriculum",
+      "CASELLGIUD":"Casellari Giudiziari",
+      "ANNO":"Anno",
+      "BILANCIO":"Bilancio",
+      "RACCOLTA":"Nome Raccolta",
+      "DOCRACCOLT":"Documento Raccolta Fondi"
+
+
+      
       
     }
   };
