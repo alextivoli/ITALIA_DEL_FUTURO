@@ -18,6 +18,27 @@
 
     <script>
            
+           $(document).ready(function () {
+            $.ajax({
+                url: "/requests", type: "post", data: { val: "candidati" }, success: function (result) {
+                    $("#candidati").html(result);
+                }
+            });
+
+            $.ajax({
+                url: "/requests", type: "post", data: { val: "bilanci" }, success: function (result) {
+                    $("#bilanci").html(result);
+                }
+            });
+
+            $.ajax({
+                url: "/requests", type: "post", data: { val: "raccolte" }, success: function (result) {
+                    $("#raccolte").html(result);
+                }
+            });
+            
+        });
+
         function setLng(l) {
             if (l == "it-it") {
                 document.getElementById("btn_en").style.display = "none"
@@ -268,22 +289,8 @@
                                   <th>Colonna 3</th>
                                 </tr>
                               </thead>
-                              <tbody>
-                                <tr>
-                                  <td>Dato 1A</td>
-                                  <td>Dato 1B</td>
-                                  <td>Dato 1C</td>
-                                </tr>
-                                <tr>
-                                  <td>Dato 2A</td>
-                                  <td>Dato 2B</td>
-                                  <td>Dato 2C</td>
-                                </tr>
-                                <tr>
-                                  <td>Dato 3A</td>
-                                  <td>Dato 3B</td>
-                                  <td>Dato 3C</td>
-                                </tr>
+                              <tbody id="candidati">
+                                
                               </tbody>
                             </table>
                           </div>
@@ -302,34 +309,8 @@
                                   <th>Colonna 3</th>
                                 </tr>
                               </thead>
-                              <tbody>
-                                <tr>
-                                  <td>Dato 1A</td>
-                                  <td>Dato 1B</td>
-                                  <td style="text-align: center;">
-                                    <a href="percorso/al/tuo/pdf.pdf" download>
-                                      <i class="fas fa-download"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>Dato 2A</td>
-                                  <td>Dato 2B</td>
-                                  <td style="text-align: center;">
-                                    <a href="percorso/al/tuo/pdf.pdf" download>
-                                      <i class="fas fa-download"></i>
-                                    </a>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>Dato 3A</td>
-                                  <td>Dato 3B</td>
-                                  <td style="text-align: center;">
-                                    <a href="percorso/al/tuo/pdf.pdf" download>
-                                      <i class="fas fa-download"></i>
-                                    </a>
-                                  </td>
-                                </tr>
+                              <tbody id="bilanci">
+                               
                               </tbody>
                             </table>
                           </div>
@@ -348,22 +329,8 @@
                                   <th>Colonna 3</th>
                                 </tr>
                               </thead>
-                              <tbody>
-                                <tr>
-                                  <td>Dato 1A</td>
-                                  <td>Dato 1B</td>
-                                  <td>Dato 1C</td>
-                                </tr>
-                                <tr>
-                                  <td>Dato 2A</td>
-                                  <td>Dato 2B</td>
-                                  <td>Dato 2C</td>
-                                </tr>
-                                <tr>
-                                  <td>Dato 3A</td>
-                                  <td>Dato 3B</td>
-                                  <td>Dato 3C</td>
-                                </tr>
+                              <tbody  id="raccolte">
+                                
                               </tbody>
                             </table>
                           </div>

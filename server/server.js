@@ -199,7 +199,7 @@ app.post('/requests', function (req, res) {
 		dbconn.query(query, function (err, rows, fields) {
 			if (rows.length > 0) {
 
-				var html = "<tbody>";
+				var html = "";
 
 				for (var i = 0; i < rows.length; i++) {
 					var htmlRow = "<td>" + rows[i].nome + "</td><td>" + rows[i].cognome + "</td>" + "<td style='text-align: center;'><a href='" + rows[i].curriculumpdf + "' download><i class='fas fa-download'></i></a></td>" + "<td style='text-align: center;'><a href='" + rows[i].cas_giudizpdf + "'download><i class='fas fa-download'></i></a></td>";
@@ -216,7 +216,7 @@ app.post('/requests', function (req, res) {
 		dbconn.query(query, function (err, rows, fields) {
 			if (rows.length > 0) {
 
-				var html = "<tbody>";
+				var html = "";
 
 				for (var i = 0; i < rows.length; i++) {
 					var htmlRow = "<td>" + rows[i].anno + "</td>" + "<td style='text-align: center;'><a href='" + rows[i].docpdf + "' download><i class='fas fa-download'></i></a></td>";
@@ -233,7 +233,7 @@ app.post('/requests', function (req, res) {
 		dbconn.query(query, function (err, rows, fields) {
 			if (rows.length > 0) {
 
-				var html = "<tbody>";
+				var html = "";
 
 				for (var i = 0; i < rows.length; i++) {
 					var htmlRow = "<td>" + rows[i].nome + "</td>" + "<td style='text-align: center;'><a href='" + rows[i].docpdf + "' download><i class='fas fa-download'></i></a></td>";
@@ -248,6 +248,28 @@ app.post('/requests', function (req, res) {
 
 	}
 	else if (req.body.val == "liste"){
+
+		var query = "SELECT l.id , l.comune as comune , l.descrizione as descrizione, l.img as img  from lciviche l";
+
+		dbconn.query(query, function (err, rows, fields) {
+			if (rows.length > 0) {
+
+				var html = "";
+
+				for (var i = 0; i < rows.length; i++) {
+					if(i > 0){
+						html = " <div class='row mt-4'>";
+					}else{
+						html = " <div class='row'>";
+					}
+					html+= "<div class='col'><div class='card card-segretariat shadow'><div class='card-body'><div class='row'><div class='col-8'> <h1 class='" + rows[i].comune + "'>Card 1</h1>"
+					html+= "<p class='card-text'>" + rows[i].descrizione +"</p></div>";
+					html+= "<div class='col-2'><img src='"+ rows[i].img +"' alt='Placeholder' class='rounded-img float-right'></div></div></div></div></div>"
+				}
+			}
+			res.send(html);
+		});
+		
 		
 	}
 
