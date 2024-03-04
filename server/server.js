@@ -249,7 +249,7 @@ app.post('/requests', function (req, res) {
 	}
 	else if (req.body.val == "liste"){
 
-		var query = "SELECT l.id , l.comune as comune , l.descrizione as descrizione, l.img as img  from lciviche l";
+		var query = "SELECT l.id , l.comune as comune , l.descrizione as descr, l.img as img  from lciviche l";
 
 		dbconn.query(query, function (err, rows, fields) {
 			if (rows.length > 0) {
