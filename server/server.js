@@ -258,9 +258,9 @@ app.post('/requests', function (req, res) {
 
 				for (var i = 0; i < rows.length; i++) {
 					if(i > 0){
-						html = " <div class='row mt-4'>";
+						html += " <div class='row mt-4'>";
 					}else{
-						html = " <div class='row'>";
+						html += " <div class='row'>";
 					}
 					html+= "<div class='col'><div class='card card-segretariat shadow'><div class='card-body'><div class='row'><div class='col-8'> <h1 class='" + rows[i].comune + "'>Card 1</h1>"
 					html+= "<p class='card-text'>" + rows[i].descrizione +"</p></div>";
