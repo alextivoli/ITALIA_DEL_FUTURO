@@ -249,7 +249,7 @@ app.post('/requests', function (req, res) {
 	}
 	else if (req.body.val == "liste"){
 
-		var query = "SELECT l.id , l.comune as comune , l.descrizione as descr, l.img as img  from lciviche l";
+		var query = "SELECT l.id , l.comune as comune , l.descr as descr, l.img as img  from lciviche l";
 
 		dbconn.query(query, function (err, rows, fields) {
 			if (rows.length > 0) {
@@ -263,7 +263,7 @@ app.post('/requests', function (req, res) {
 						html += " <div class='row'>";
 					}
 					html+= "<div class='col'><div class='card card-segretariat shadow'><div class='card-body'><div class='row'><div class='col-8'> <h1 class='" + rows[i].comune + "'>Card 1</h1>"
-					html+= "<p class='card-text'>" + rows[i].descrizione +"</p></div>";
+					html+= "<p class='card-text'>" + rows[i].descr +"</p></div>";
 					html+= "<div class='col-2'><img src='"+ rows[i].img +"' alt='Placeholder' class='rounded-img float-right'></div></div></div></div></div>"
 				}
 			}
