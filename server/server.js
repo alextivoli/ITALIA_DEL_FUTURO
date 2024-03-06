@@ -21,7 +21,7 @@ const dbconn = mysql.createConnection({ host: 'localhost', user: 'root', passwor
 //const storage = multer.diskStorage({destination: (req, file, cb) => {const percorso = "./articoli/" + parseInt(Date.now()).toString() + "/"; fs.mkdirSync(percorso,{recursive:true}); cb(null, percorso);},filename: (req, file, cb) => {cb(null, file.originalname);}});
 const storage = multer.diskStorage({ destination: (req, file, cb) => { const percorso = "./articoli/"; cb(null, percorso); }, filename: (req, file, cb) => { cb(null, file.originalname); } });
 const mailconn = nodemailer.createTransport({ host: "smtps.aruba.it", auth: { user: 'noreply@italiadelfuturo.it', pass: 'Idfdn2023' }, port: 465 });
-const domains = ["italiadelfuturo.it"];
+const domains = ["italiadelfuturo.it", "davidenostrini.italiadelfuturo.it"];
 //const redisclient = redis.createClient();
 const defaultLang = "it-it"
 
@@ -80,7 +80,8 @@ app.get('/:det', function (req, res) {
 		else if (det == "login") res.sendFile(__dirname + "/public/login.html");
 		else res.status(404).send("Opss! Pagina errata o accesso non consentito.");
 	}
-	else {
+	else
+	{
 		res.status(404).send("Opss! Pagina errata o accesso non consentito.");
 	}
 });
