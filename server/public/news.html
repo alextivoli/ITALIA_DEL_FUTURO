@@ -17,6 +17,22 @@
     <title>Idf - notizie</title>
 
     <script>
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "/requests", type: "post", data: { val: "articoloPrimo" }, success: function (result) {
+                    $("#frame_news1").html(result);
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "/requests", type: "post", data: { val: "articoliAll" }, success: function (result) {
+                    $("#frame_news2").html(result);
+                }
+            });
+        });
            
         function setLng(l) {
             if (l == "it-it") {
@@ -207,20 +223,18 @@
         <div class='hero'>
             <div class='hero__content reveal caption container' id='frame_1'>
                 <div class="container">
-                    <!-- Sovraimpressione -->
-                    <div class="jumbotron">
-                        <h1 class="display-4 text-color-black">Titolo principale</h1>
+                    
+                    <div class="jumbotron" id="frame_news1">
+                        <!-- <h1 class="display-4 text-color-black">Titolo principale</h1>
                         <p class="lead text-color-black">Sottotitolo o descrizione breve.</p>
-                        <!-- Immagine in sovraimpressione -->
                         <img src="../img/background/italy1.jpeg" class="img-fluid max-height-img"
                             alt="Immagine di sovraimpressione">
-                            <hr style="color: black;" width="100%">
+                            <hr style="color: black;" width="100%"> -->
                     </div>
 
-                    <!-- Tre card Bootstrap sotto la sovraimpressione -->
-                    <div class="row mt-4 mb-5">
-                        <!-- Prima card -->
-                        <div class="col-md-4">
+
+                    <div class="row mt-4 mb-5" id="frame_news2">
+                        <!-- <div class="col-md-4">
                             <div class="card">
                                 <img src="../img/background/italy1.jpeg" class="card-img-top max-height-img"
                                     alt="Immagine 1">
@@ -232,7 +246,7 @@
                             </div>
                         </div>
 
-                        <!-- Seconda card -->
+
                         <div class="col-md-4 mt-2">
                             <div class="card">
                                 <img src="../img/background/italy1.jpeg" class="card-img-top max-height-img"
@@ -245,7 +259,7 @@
                             </div>
                         </div>
 
-                        <!-- Terza card -->
+        
                         <div class="col-md-4 mt-2">
                             <div class="card">
                                 <img src="../img/background/italy1.jpeg" class="card-img-top max-height-img"
@@ -256,7 +270,7 @@
                                     <a href="#" class="btn btn-primary">Leggi di più</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     

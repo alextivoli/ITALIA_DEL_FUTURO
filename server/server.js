@@ -245,8 +245,78 @@ app.post('/requests', function (req, res) {
 			res.send(html);
 		});
 	}
-	else if (req.body.val == "articoli"){
+	else if (req.body.val == "articoloPrimo"){
 
+		var query = "SELECT a.titolo as titolo , a.cartella as cartella  FROM articoli a order by a.id desc ";
+
+		dbconn.query(query, function (err, rows, fields) {
+			if (rows.length > 0) {
+				var pfile = "";		
+				var htmlDet = " <h1 class='display-4 text-color-black'>"+rows[0].titolo +"</h1><p class='lead text-color-black'>!!</p>";
+				htmlDet += "<img src='../img/articoli/" + rows[0].titolo+ ".jpeg' class='img-fluid max-height-img' alt='Immagine " + rows[0].titolo +"'><hr style='color: black;' width='100%'>";
+				
+				pfile = __dirname+"/descrizioni/"+rows[i].titolo+".txt";
+				fs.readFile(pfile, 'utf8', function(err, data)
+				{ 
+					if (err) throw err; 
+					htmlDet=htmlDet.replaceAll("!!",data).substring(0, 1000);
+					res.send(htmlDet);
+				});
+			}
+		});
+	}
+	else if (req.body.val == "articoliSecondi"){
+
+		var query = "SELECT a.titolo as titolo , a.cartella as cartella  FROM articoli a order by a.id desc ";
+
+		dbconn.query(query, function (err, rows, fields) {
+			if (rows.length > 0) {
+
+				var htmlDet = "<div class='col-md-4 mt-2'><div class='card'>";
+				for (var i = 1; i < rows.length; i++) {
+					if(i < 4){
+						var pfile = "";		
+						htmlDet += " <img src='../img/articoli/" + rows[i].titolo+ ".jpeg' class='card-img-top max-height-img' alt='Immagine " + rows[i].titolo +" '> <div class='card-body'>";
+						htmlDet += "<h5 class='card-title'>" + rows[i].titolo+ "</h5>";
+						htmlDet += "<p class='card-text text-color-black'>!!</p> <a href='#' class='btn btn-primary'>Leggi di più</a></div></div></div>";
+						
+						pfile = __dirname+"/descrizioni/"+rows[i].titolo+".txt";
+						fs.readFile(pfile, 'utf8', function(err, data)
+						{ 
+							if (err) throw err; 
+							htmlDet=htmlDet.replaceAll("!!",data).substring(0, 1000);
+							res.send(htmlDet);
+						});
+					}
+					
+				}
+			}
+		});
+	}
+	else if (req.body.val == "articoliAll"){
+
+		var query = "SELECT a.titolo as titolo , a.cartella as cartella  FROM articoli a order by a.id desc ";
+
+		dbconn.query(query, function (err, rows, fields) {
+			if (rows.length > 0) {
+
+				var htmlDet = "<div class='col-md-4 mt-2'><div class='card'>";
+				for (var i = 0; i < rows.length; i++) {
+					var pfile = "";		
+					htmlDet += " <img src='../img/articoli/" + rows[i].titolo+ ".jpeg' class='card-img-top max-height-img' alt='Immagine " + rows[i].titolo +" '> <div class='card-body'>";
+					htmlDet += "<h5 class='card-title'>" + rows[i].titolo+ "</h5>";
+					htmlDet += "<p class='card-text text-color-black'>!!</p> <a href='#' class='btn btn-primary'>Leggi di più</a></div></div></div>";
+					
+					pfile = __dirname+"/descrizioni/"+rows[i].titolo+".txt";
+					fs.readFile(pfile, 'utf8', function(err, data)
+					{ 
+						if (err) throw err; 
+						htmlDet=htmlDet.replaceAll("!!",data).substring(0, 1000);
+						res.send(htmlDet);
+					});
+				}
+			}
+		});
 	}
 	else if (req.body.val == "liste"){
 
@@ -263,7 +333,7 @@ app.post('/requests', function (req, res) {
 					}else{
 						html += " <div class='row'>";
 					}
-					html+= "<div class='col'><div class='card card-segretariat shadow'><div class='card-body'><div class='row'><div class='col-8'> <h1 class='" + rows[i].comune + "'>Card 1</h1>"
+					html+= "<div class='col'><div class='card card-segretariat shadow'><div class='card-body'><div class='row'><div class='col-8'> <h1 class='" + rows[i].comune + "'></h1>"
 					html+= "<p class='card-text'>" + rows[i].descr +"</p></div>";
 					html+= "<div class='col-2'><img src='"+ rows[i].img +"' alt='Placeholder' class='rounded-img float-right'></div></div></div></div></div>"
 				}
