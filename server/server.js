@@ -245,78 +245,53 @@ app.post('/requests', function (req, res) {
 			res.send(html);
 		});
 	}
-	else if (req.body.val == "articoloPrimo"){
-
-		var query = "SELECT a.titolo as titolo , a.cartella as cartella  FROM articoli a order by a.id desc ";
-
-		dbconn.query(query, function (err, rows, fields) {
-			if (rows.length > 0) {
-				var pfile = "";		
-				var htmlDet = " <h1 class='display-4 text-color-black'>"+rows[0].titolo +"</h1><p class='lead text-color-black'>!!</p>";
-				htmlDet += "<img src='../img/articoli/" + rows[0].titolo+ ".jpeg' class='img-fluid max-height-img' alt='Immagine " + rows[0].titolo +"'><hr style='color: black;' width='100%'>";
-				
-				pfile = __dirname+"/descrizioni/"+rows[i].titolo+".txt";
-				fs.readFile(pfile, 'utf8', function(err, data)
-				{ 
-					if (err) throw err; 
-					htmlDet=htmlDet.replaceAll("!!",data).substring(0, 1000);
-					res.send(htmlDet);
-				});
-			}
-		});
-	}
-	else if (req.body.val == "articoliSecondi"){
-
-		var query = "SELECT a.titolo as titolo , a.cartella as cartella  FROM articoli a order by a.id desc ";
-
-		dbconn.query(query, function (err, rows, fields) {
-			if (rows.length > 0) {
-
-				var htmlDet = "<div class='col-md-4 mt-2'><div class='card'>";
-				for (var i = 1; i < rows.length; i++) {
-					if(i < 4){
-						var pfile = "";		
-						htmlDet += " <img src='../img/articoli/" + rows[i].titolo+ ".jpeg' class='card-img-top max-height-img' alt='Immagine " + rows[i].titolo +" '> <div class='card-body'>";
-						htmlDet += "<h5 class='card-title'>" + rows[i].titolo+ "</h5>";
-						htmlDet += "<p class='card-text text-color-black'>!!</p> <a href='#' class='btn btn-primary'>Leggi di più</a></div></div></div>";
-						
-						pfile = __dirname+"/descrizioni/"+rows[i].titolo+".txt";
-						fs.readFile(pfile, 'utf8', function(err, data)
-						{ 
-							if (err) throw err; 
-							htmlDet=htmlDet.replaceAll("!!",data).substring(0, 1000);
-							res.send(htmlDet);
-						});
+	else if (req.body.val == "previewArticles")
+	{
+		var num = req.body.numArt;
+		
+		if (num && num == 1)
+		{
+			var query = "SELECT titolo,cartella FROM articoli ORDER BY dataora LIMIT 1";
+			dbconn.query(query, function (err, rows, fields)
+			{
+				var html = "<h1 class='display-4 text-color-black'>" + rows[0].titolo + "</h1><p class='lead text-color-black'>!!</p>";
+				html += "<img src='./articoli/" + rows[0].cartella + "/1.jpg' class='img-fluid max-height-img' alt='Immagine " + rows[0].titolo + "'><hr style='color: black;' width='100%'>";
+				var pathfile = "./articoli/" + rows[0].cartella + "/page.txt";
+				var page = fs.readFileSync(pathfile).substring(0, 1000);
+				html = html.replace("!!", page);
+				res.send(html);
+			});
+		}
+		else
+		{
+			var query = "";
+			var invars = null;
+			if (!num) {query = "SELECT titolo,cartella FROM articoli ORDER BY dataora"; invars = [];}
+			else {query = "SELECT titolo,cartella FROM articoli ORDER BY dataora LIMIT ?"; invars = [num];}
+			
+			dbconn.query(query, invars, function (err, rows, fields)
+			{
+				if (rows.length > 0)
+				{
+					var html = "";
+					for (var i = 0; i < rows.length; i++)
+					{
+						html += "<div class='col-md-4 mt-2'><div class='card'>";
+						var pathfile = "./articoli/" + rows[i].cartella + "/page.txt";
+						html += "<img src='./articoli/" + rows[i].cartella + "/1.jpg' class='card-img-top max-height-img' alt='Immagine " + rows[i].titolo + " '><div class='card-body'>";
+						html += "<h5 class='card-title'>" + rows[i].titolo + "</h5>";
+						html += "<p class='card-text text-color-black'>!!</p> <a href='#' class='btn btn-primary'>Leggi di più</a></div></div></div>";
+						var page = fs.readFileSync(pathfile).substring(0, 1000);
+						html = html.replace("!!", page);
 					}
-					
+					res.send(htmlDet);
 				}
-			}
-		});
-	}
-	else if (req.body.val == "articoliAll"){
-
-		var query = "SELECT a.titolo as titolo , a.cartella as cartella  FROM articoli a order by a.id desc ";
-
-		dbconn.query(query, function (err, rows, fields) {
-			if (rows.length > 0) {
-
-				var htmlDet = "<div class='col-md-4 mt-2'><div class='card'>";
-				for (var i = 0; i < rows.length; i++) {
-					var pfile = "";		
-					htmlDet += " <img src='../img/articoli/" + rows[i].titolo+ ".jpeg' class='card-img-top max-height-img' alt='Immagine " + rows[i].titolo +" '> <div class='card-body'>";
-					htmlDet += "<h5 class='card-title'>" + rows[i].titolo+ "</h5>";
-					htmlDet += "<p class='card-text text-color-black'>!!</p> <a href='#' class='btn btn-primary'>Leggi di più</a></div></div></div>";
-					
-					pfile = __dirname+"/descrizioni/"+rows[i].titolo+".txt";
-					fs.readFile(pfile, 'utf8', function(err, data)
-					{ 
-						if (err) throw err; 
-						htmlDet=htmlDet.replaceAll("!!",data).substring(0, 1000);
-						res.send(htmlDet);
-					});
+				else
+				{
+					res.send("<b>ERRORE! NESSUN ARTICOLO CARICATO!</b>");
 				}
-			}
-		});
+			});
+		}
 	}
 	else if (req.body.val == "liste"){
 
