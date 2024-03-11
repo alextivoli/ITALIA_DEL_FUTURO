@@ -20,7 +20,7 @@
 
         $(document).ready(function () {
             $.ajax({
-                url: "/requests", type: "post", data: { val: "articoloPrimo" }, success: function (result) {
+                url: "/requests", type: "post", data: { val: "previewArticles", num: 1}, success: function (result) {
                     $("#frame_news1").html(result);
                 }
             });
@@ -28,7 +28,7 @@
 
         $(document).ready(function () {
             $.ajax({
-                url: "/requests", type: "post", data: { val: "articoliAll" }, success: function (result) {
+                url: "/requests", type: "post", data: { val: "previewArticles", num: 3 }, success: function (result) {
                     $("#frame_news2").html(result);
                 }
             });
