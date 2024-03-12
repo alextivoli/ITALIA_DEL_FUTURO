@@ -291,7 +291,7 @@ app.post('/requests', function (req, res) {
 						var page = fs.readFileSync(pathfile);
 						html = html.replace("!!", page);
 					}
-					res.send(htmlDet);
+					res.send(html);
 				}
 				else
 				{
