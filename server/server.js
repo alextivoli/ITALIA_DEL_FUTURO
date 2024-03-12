@@ -254,9 +254,12 @@ app.post('/requests', function (req, res) {
 			var query = "SELECT titolo,cartella FROM articoli ORDER BY dataora LIMIT 1";
 			dbconn.query(query, function (err, rows, fields)
 			{
+				const directoryPath = './articoli/' + rows[0].cartella + '/';
+				const images = fs.readdirSync(directoryPath).filter(file => {return /\.(png|jpg|jpeg)$/.test(file);});
+				
 				var html = "<h1 class='display-4 text-color-black'>" + rows[0].titolo + "</h1><p class='lead text-color-black'>!!</p>";
-				html += "<img src='./articoli/" + rows[0].cartella + "/1.jpg' class='img-fluid max-height-img' alt='Immagine " + rows[0].titolo + "'><hr style='color: black;' width='100%'>";
-				var pathfile = "./articoli/" + rows[0].cartella + "/page.txt";
+				html += "<img src='" + directoryPath + images[0] + "' class='img-fluid max-height-img' alt='Immagine " + rows[0].titolo + "'><hr style='color: black;' width='100%'>";
+				var pathfile = directoryPath + "page.txt";
 				var page = fs.readFileSync(pathfile).substring(0, 1000);
 				html = html.replace("!!", page);
 				res.send(html);
@@ -276,9 +279,12 @@ app.post('/requests', function (req, res) {
 					var html = "";
 					for (var i = 0; i < rows.length; i++)
 					{
+						const directoryPath = './articoli/' + rows[i].cartella + '/';
+						const images = fs.readdirSync(directoryPath).filter(file => {return /\.(png|jpg|jpeg)$/.test(file);});
+						
 						html += "<div class='col-md-4 mt-2'><div class='card'>";
-						var pathfile = "./articoli/" + rows[i].cartella + "/page.txt";
-						html += "<img src='./articoli/" + rows[i].cartella + "/1.jpg' class='card-img-top max-height-img' alt='Immagine " + rows[i].titolo + " '><div class='card-body'>";
+						var pathfile = directoryPath + "page.txt";
+						html += "<img src='" + directoryPath + images[0] + "' class='card-img-top max-height-img' alt='Immagine " + rows[i].titolo + " '><div class='card-body'>";
 						html += "<h5 class='card-title'>" + rows[i].titolo + "</h5>";
 						html += "<p class='card-text text-color-black'>!!</p> <a href='#' class='btn btn-primary'>Leggi di più</a></div></div></div>";
 						var page = fs.readFileSync(pathfile).substring(0, 1000);
