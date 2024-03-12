@@ -261,6 +261,7 @@ app.post('/requests', function (req, res) {
 				html += "<img src='" + directoryPath + images[0] + "' class='img-fluid max-height-img' alt='Immagine " + rows[0].titolo + "'><hr style='color: black;' width='100%'>";
 				var pathfile = directoryPath + "page.txt";
 				var page = fs.readFileSync(pathfile).substring(0, 1000);
+				console.log(page);
 				html = html.replace("!!", page);
 				res.send(html);
 			});
