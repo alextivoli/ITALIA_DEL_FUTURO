@@ -277,7 +277,7 @@
                 </div>
             </div>
         </div>
-        <div class="content-newsletter">
+        <div class="content-newsletter" id="content-newsletter" style="opacity: 0;" >
             <div class="container mt-3 mb-3">
                 <div class="row justify-content-center">
                     <div class="col-md-6" id="newsletterForm">
@@ -314,7 +314,7 @@
 
         </div>
 
-        <div class="content-contact ">
+        <div class="content-contact " id="content-contact" style="opacity: 0;">
             <div class="row mb-4" id="slideForm">
                 <h1 class="text-center mb-4 lang" key="CONTACT"></h1>
                 <div class="container slide-form d-flex justify-content-center ">
@@ -481,6 +481,16 @@
                 const nav = document.getElementById('nav-home');
 
                 const frame_1 = document.getElementById('frame_1');
+
+                const contentNewsletter = document.getElementById('content-newsletter');
+                const contenContact = document.getElementById('content-contact');
+                
+                contentNewsletter.style.animation = ' nav_comparse 2s ';
+                contentNewsletter.style.opacity = '1';
+
+                contenContact.style.animation = ' nav_comparse 2s ';
+                contenContact.style.opacity = '1';
+
 
                 frame_1.style.animation = ' nav_comparse 2s ';
                 frame_1.style.opacity = '1';

@@ -297,7 +297,7 @@
             </div>
         </div>
 
-        <div class="container content-news">
+        <div class="container content-news" id="content-news" style="opacity: 0;">
                     <div class="jumbotron" id="frame_news1">
                         <!-- <h1 class="display-4 text-color-black">Titolo principale</h1>
                         <p class="lead text-color-black">Sottotitolo o descrizione breve.</p>
@@ -372,7 +372,7 @@
         </div> -->
 
 
-        <div class="content-newsletter">
+        <div class="content-newsletter" id="content-newsletter" style="opacity: 0;">
             <div class="container mt-3 mb-3">
                 <div class="row justify-content-center">
                     <div class="col-md-6" id="newsletterForm">
@@ -409,14 +409,14 @@
 
         </div>
 
-        <div class="content-trasparency">
+        <div class="content-trasparency" id="content-trasparency" style="opacity: 0;">
             <div id="transparencyBanner">
                 <h1 class="text-ubuntu">Visita la sezione <a href="/trasparency">Trasparenza</a></h1>
             </div>
         </div>
 
 
-        <div class="content-contact ">
+        <div class="content-contact " id="content-contact" style="opacity: 0;">
             <div class="row mb-4" id="slideForm">
                 <h1 class="text-center mb-4 lang" key="CONTACT"></h1>
                 <div class="container slide-form d-flex justify-content-center ">
@@ -596,6 +596,23 @@
                 const nav = document.getElementById('nav-home');
 
                 const frame_1 = document.getElementById('frame_1');
+
+                const contentNews = document.getElementById('content-news');
+                const contentTrasparency = document.getElementById('content-trasparency');
+                const contentNewsletter = document.getElementById('content-newsletter');
+                const contenContact = document.getElementById('content-contact');
+
+                contentNews.style.animation = ' nav_comparse 2s ';
+                contentNews.style.opacity = '1';
+
+                contentTrasparency.style.animation = ' nav_comparse 2s ';
+                contentTrasparency.style.opacity = '1';
+
+                contentNewsletter.style.animation = ' nav_comparse 2s ';
+                contentNewsletter.style.opacity = '1';
+
+                contenContact.style.animation = ' nav_comparse 2s ';
+                contenContact.style.opacity = '1';
 
                 frame_1.style.animation = ' nav_comparse 2s ';
                 frame_1.style.opacity = '1';
