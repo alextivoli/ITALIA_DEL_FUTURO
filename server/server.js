@@ -272,7 +272,7 @@ app.post('/requests', function (req, res) {
 			var query = "";
 			var invars = null;
 			if (!num) {query = "SELECT titolo,cartella FROM articoli ORDER BY dataora"; invars = [];}
-			else {query = "SELECT titolo,cartella FROM articoli ORDER BY dataora LIMIT ?"; invars = [num];}
+			else {query = "SELECT titolo,cartella FROM articoli ORDER BY dataora LIMIT " + num; invars = [num];}
 			
 			dbconn.query(query, invars, function (err, rows, fields)
 			{
