@@ -247,7 +247,8 @@ app.post('/requests', function (req, res) {
 	}
 	else if (req.body.val == "previewArticles")
 	{
-		var num = req.body.numArt;
+		console.log(req.body);
+		var num = req.body.num;
 		
 		if (num && num == 1)
 		{
