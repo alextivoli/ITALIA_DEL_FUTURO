@@ -222,9 +222,11 @@ app.post('/requests', function (req, res) {
 					var htmlRow = "<td>" + rows[i].nome + "</td><td>" + rows[i].cognome + "</td>" + "<td style='text-align: center;'><a href='" + rows[i].curriculumpdf + "' download><i class='fas fa-download'></i></a></td>" + "<td style='text-align: center;'><a href='" + rows[i].cas_giudizpdf + "'download><i class='fas fa-download'></i></a></td>";
 					html += htmlRow;
 				}
-
+				res.send(html);
+			}else{
+				res.send("<b>Non sono presenti Candidati</b>");
 			}
-			res.send(html);
+			
 		});
 	}
 	else if (req.body.val == "bilanci") {
@@ -239,9 +241,12 @@ app.post('/requests', function (req, res) {
 					var htmlRow = "<td>" + rows[i].anno + "</td>" + "<td style='text-align: center;'><a href='" + rows[i].docpdf + "' download><i class='fas fa-download'></i></a></td>";
 					html += htmlRow;
 				}
-
+				res.send(html);
 			}
-			res.send(html);
+			else{
+				res.send("<b>Non sono presenti Bilanci</b>");
+			}
+			
 		});
 	}
 	else if (req.body.val == "raccolte") {
@@ -256,9 +261,12 @@ app.post('/requests', function (req, res) {
 					var htmlRow = "<td>" + rows[i].nome + "</td>" + "<td style='text-align: center;'><a href='" + rows[i].docpdf + "' download><i class='fas fa-download'></i></a></td>";
 					html += htmlRow;
 				}
-
+				res.send(html);
 			}
-			res.send(html);
+			else{
+				res.send("<b>Non sono presenti Raccolte Fondi</b>");
+			}
+			
 		});
 	}
 	else if (req.body.val == "previewArticles")
@@ -336,8 +344,11 @@ app.post('/requests', function (req, res) {
 					html+= "<p class='card-text'>" + rows[i].descr +"</p></div>";
 					html+= "<div class='col-2'><img src='"+ rows[i].img +"' alt='Placeholder' class='rounded-img float-right'></div></div></div></div></div>"
 				}
+				res.send(html);
+			}else{
+				res.send("<b>Non sono presenti Liste Civiche</b>");
 			}
-			res.send(html);
+			
 		});	
 	}
 	else if (req.body.val == "detNews")
@@ -354,7 +365,6 @@ app.post('/requests', function (req, res) {
 				var articolo = fs.readFileSync(directoryPath + "page.txt", 'utf8');
 				html = html.replace("!!",articolo);
 				res.send(html);
-				console.log("test");
 			}
 			else
 			{

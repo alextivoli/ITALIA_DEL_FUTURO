@@ -209,7 +209,7 @@ body::-webkit-scrollbar {
 .content-page-trasparency{
   
   position: relative;
-  height: auto;
+  height: 100vh;
   display: grid;
   width: 100%;
   align-items: center;
@@ -223,7 +223,7 @@ body::-webkit-scrollbar {
 .content-segretariat{
   
   position: relative;
-  height: auto;
+  height: 100vh;
   display: grid;
   width: 100%;
   align-items: center;
