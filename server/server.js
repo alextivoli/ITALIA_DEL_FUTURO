@@ -361,7 +361,7 @@ app.post('/requests', function (req, res) {
 			{
 				var directoryPath = './articoli/' + rows[0].cartella + '/';
 				var images = fs.readdirSync(directoryPath).filter(file => {return /\.(png|jpg|jpeg)$/.test(file);});
-				var html = "<img src='" + images[0] + "' class='card-img-top img-fluid' alt='Immagine di sfondo'><div class='card-body'><h5 class='card-title'>" + rows[0].titolo + "</h5><p class='card-text'>" + rows[0].titolo + "</p><hr><p>!!</p></div>";
+				var html = "<img src='" + directoryPath + images[0] + "' class='card-img-top img-fluid' alt='Immagine di sfondo'><div class='card-body'><h5 class='card-title'>" + rows[0].titolo + "</h5><p class='card-text'>" + rows[0].titolo + "</p><hr><p>!!</p></div>";
 				var articolo = fs.readFileSync(directoryPath + "page.txt", 'utf8');
 				html = html.replace("!!",articolo);
 				res.send(html);
