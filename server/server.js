@@ -341,7 +341,7 @@ app.post('/requests', function (req, res) {
 	else if (req.body.val == "detNews")
 	{
 		var idNews = req.body.idNews;
-		var query = "SELECT * FROM articoli WHERE cartella LIKE ?";
+		var query = "SELECT * FROM articoli WHERE cartella LIKE "+ idNews;
 		dbconn.query(query, [idNews], function (err, rows, fields)
 		{
 			if (rows.length == 1)
