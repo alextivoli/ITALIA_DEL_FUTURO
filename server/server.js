@@ -340,6 +340,7 @@ app.post('/requests', function (req, res) {
 	}
 	else if (req.body.val == "detNews")
 	{
+		console.log("test");
 		var idNews = req.body.idNews;
 		var query = "SELECT * FROM articoli WHERE cartella LIKE "+ idNews;
 		dbconn.query(query, [idNews], function (err, rows, fields)
@@ -352,6 +353,7 @@ app.post('/requests', function (req, res) {
 				var articolo = fs.readFileSync(directoryPath + "page.txt", 'utf8');
 				html = html.replace("!!",articolo);
 				res.send(html);
+				console.log("test");
 			}
 			else
 			{
