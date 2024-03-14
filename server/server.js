@@ -36,6 +36,7 @@ app.use("/img", express.static(path.join(__dirname, 'immagini')));
 app.use("/css", express.static(path.join(__dirname, 'css')));
 app.use("/utility", express.static(path.join(__dirname, 'utility')));
 app.use("/flags", express.static(path.join(__dirname, 'flags')));
+app.use("/articoli", express.static(path.join(__dirname, 'articoli')));
 
 const server = https.createServer(options, app);
 dbconn.connect();
