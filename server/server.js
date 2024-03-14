@@ -143,7 +143,7 @@ app.post('/form_articolo', upload.array('allegati'), function (req, res) {
 			from: '"Italia del Futuro" <noreply@italiadelfuturo.it>',
 			bcc: bccList,
 			subject: 'IDF informa',
-			html: '<p>Ti informiamo del nuovo articolo!</p><br><p>Puoi vederlo cliccando <a href="https://itliadelfuturo.it/news/'+ nameFold +'/">qui</a>!</p>',
+			html: '<p>Ti informiamo del nuovo articolo!</p><br><p>Puoi vederlo cliccando <a href="https://italiadelfuturo.it/news/'+ nameFold +'/">qui</a>!</p>',
 		};
 
 		transporter.sendMail(mailOptions, function (error, info) {
@@ -340,7 +340,6 @@ app.post('/requests', function (req, res) {
 	}
 	else if (req.body.val == "detNews")
 	{
-		console.log("test");
 		var idNews = req.body.idNews;
 		var query = "SELECT * FROM articoli WHERE cartella LIKE "+ idNews;
 		dbconn.query(query, [idNews], function (err, rows, fields)
