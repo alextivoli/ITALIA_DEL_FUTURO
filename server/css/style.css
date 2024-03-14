@@ -234,7 +234,7 @@ body::-webkit-scrollbar {
 
 .content-detailsNews{
   position: relative;
-  height: auto;
+  height: 100vh;
   display: grid;
   width: 100%;
   align-items: center;
