@@ -282,7 +282,7 @@ app.post('/requests', function (req, res) {
 				const images = fs.readdirSync(directoryPath).filter(file => {return /\.(png|jpg|jpeg)$/.test(file);});
 				
 				var html = "<h1 class='display-4 text-color-black'>" + rows[0].titolo + "</h1><p class='lead text-color-black'>!!</p>";
-				html += "<img src='" + directoryPath + images[0] + "' class='img-fluid max-height-img' alt='Immagine " + rows[0].titolo + "'><a href='/"+rows[i].cartella+"' class='btn btn-primary' style='margin: 1%'>Leggi di più</a><hr style='color: black;' width='100%'>";
+				html += "<img src='" + directoryPath + images[0] + "' class='img-fluid max-height-img' alt='Immagine " + rows[0].titolo + "'><a href='/"+rows[0].cartella+"' class='btn btn-primary' style='margin: 1%'>Leggi di più</a><hr style='color: black;' width='100%'>";
 				var pathfile = directoryPath + "page.txt";
 				var page = fs.readFileSync(pathfile);
 				page = page.toString().substring(0, 2000);
