@@ -55,8 +55,25 @@
                 }
             });
         }
+		
+		function displayNews()
+		{
+			var urlParts = window.location.href.split('/');
+			var idNews = urlParts[-1];
+			$.ajax({
+				url: '/requests',
+                type: 'POST',
+                data: { value: "detNews", idNews: idNews },
+                success: function (data)
+				{
+					if (data != ""){$("#fillDetail").append(data);}
+					else {$("#fillDetail").append("<b>Errore! Articolo inesistente!</b>");}
+                }
+           });
+		}
 
         $(document).ready(function () {
+			displayNews();
             manageLang();
 
             $(".translate").click(function () {
@@ -202,22 +219,7 @@
 
 
         <div class="container content-detailsNews" id="frame_1" style='opacity: 0;' >
-            <div class="card">
-                <img src="../img/background/italy1.jpeg" class="card-img-top img-fluid" alt="Immagine di sfondo">
-                <div class="card-body">
-                    <h5 class="card-title">Titolo principale</h5>
-                    <p class="card-text">Sottotitolo o descrizione breve.</p>
-                    <hr>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc accumsan, 
-                        nisl eget elementum hendrerit, risus nisl tincidunt lectus, 
-                        ac ultrices eros neque eget lectus. Nam venenatis risus ac neque hendrerit, 
-                        eget ullamcorper lectus lacinia. Donec sit amet risus ac lectus aliquam hendrerit. 
-                        Maecenas sit amet leo eget nibh hendrerit lacinia. Vivamus eget accumsan lectus. 
-                        Nunc euismod, lectus eget ultricies ultricies, risus risus hendrerit leo, 
-                        eget vehicula leo quam ac eros. Nunc id risus eu neque hendrerit ultricies.
-                    </p>
-                </div>
+            <div class="card" id="fillDetail" name="fillDetail">
             </div>
         </div>
 

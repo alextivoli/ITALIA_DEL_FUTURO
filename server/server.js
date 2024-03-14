@@ -86,6 +86,21 @@ app.get('/:det', function (req, res) {
 	}
 });
 
+app.get('/news/:det', function(req,res)
+{
+    var det = req.params.det;
+	var host = req.headers.host;
+	if (host == domains[0])
+    {
+		res.sendFile(__dirname + "/public/detailsNews.html"); //si può modificare deirettamente da qui senza nuova richiesta dal client
+	}
+	else
+	{
+		res.status(404).send("Opss! Pagina errata o accesso non consentito.");
+	}	
+});
+
+
 app.post('/form_articolo', upload.array('allegati'), function (req, res) {
 	var titolo = req.body.titolo;
 	var orig = './articoli/';
@@ -320,13 +335,30 @@ app.post('/requests', function (req, res) {
 				}
 			}
 			res.send(html);
-		});
-		
-		
+		});	
 	}
-
+	else if (req.body.val == "detNews")
+	{
+		var idNews = req.body.idNews;
+		var query = "SELECT * FROM articoli WHERE cartella LIKE ?";
+		dbconn.query(query, [idNews], function (err, rows, fields)
+		{
+			if (rows.length == 1)
+			{
+				var directoryPath = './articoli/' + rows[0].cartella + '/';
+				var images = fs.readdirSync(directoryPath).filter(file => {return /\.(png|jpg|jpeg)$/.test(file);});
+				var html = "<img src='" + images[0] + "' class='card-img-top img-fluid' alt='Immagine di sfondo'><div class='card-body'><h5 class='card-title'>" + rows[0].titolo + "</h5><p class='card-text'>" + rows[0].titolo + "</p><hr><p>!!</p></div>";
+				var articolo = fs.readFileSync(directoryPath + "page.txt", 'utf8');
+				html = html.replace("!!",articolo);
+				res.send(html);
+			}
+			else
+			{
+				res.send("");
+			}
+		});
+	}
 });
-
 
 //---------------------------------------------------------------------------------------------------------------
 
