@@ -59,7 +59,7 @@
 		function displayNews()
 		{
 			var urlParts = window.location.href.split('/');
-			var idNews = urlParts[-1];
+			var idNews = urlParts[urlParts.length - 1];
             console.log("idNews " + urlParts);
 			$.ajax({
 				url: '/requests',
