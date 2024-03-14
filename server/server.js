@@ -142,7 +142,7 @@ app.post('/form_articolo', upload.array('allegati'), function (req, res) {
 			from: '"Italia del Futuro" <noreply@italiadelfuturo.it>',
 			bcc: bccList,
 			subject: 'IDF informa',
-			text: 'Ti informiamo del nuovo articolo!',
+			html: '<p>Ti informiamo del nuovo articolo!</p><br><p>Puoi vederlo cliccando <a href="https://itliadelfuturo.it/news/'+ nameFold +'/">qui</a>!</p>',
 		};
 
 		transporter.sendMail(mailOptions, function (error, info) {
@@ -266,7 +266,7 @@ app.post('/requests', function (req, res) {
 		
 		if (num && num == 1)
 		{
-			var query = "SELECT titolo,cartella FROM articoli ORDER BY dataora LIMIT 1";
+			var query = "SELECT titolo,cartella FROM articoli ORDER BY dataora DESC LIMIT 1";
 			dbconn.query(query, function (err, rows, fields)
 			{
 				const directoryPath = './articoli/' + rows[0].cartella + '/';
@@ -284,8 +284,8 @@ app.post('/requests', function (req, res) {
 		{
 			var query = "";
 			var invars = null;
-			if (!num) {query = "SELECT titolo,cartella FROM articoli ORDER BY dataora"; invars = [];}
-			else {query = "SELECT titolo,cartella FROM articoli ORDER BY dataora LIMIT " + num; invars = [num];}
+			if (!num) {query = "SELECT titolo,cartella FROM articoli ORDER BY dataora DESC"; invars = [];}
+			else {query = "SELECT titolo,cartella FROM articoli ORDER BY dataora DESC LIMIT ?" + num; invars = [num];}
 			
 			dbconn.query(query, invars, function (err, rows, fields)
 			{
