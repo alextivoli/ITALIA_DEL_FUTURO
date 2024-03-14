@@ -60,6 +60,7 @@
 		{
 			var urlParts = window.location.href.split('/');
 			var idNews = urlParts[-1];
+            console.log("idNews " + idNews);
 			$.ajax({
 				url: '/requests',
                 type: 'POST',
