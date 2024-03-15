@@ -68,8 +68,8 @@ app.get('/:det', function (req, res) {
 	var det = req.params.det;
 	var host = req.headers.host;
 	if (host == domains[0]) {
-		if (det == "home") res.sendFile(__dirname + "/public/index.html");
-		else if (det == "homeprova") res.sendFile(__dirname + "/public/index2.html");
+		if (det == "home") res.sendFile(__dirname + "/public/index2.html");
+		//else if (det == "homeprova") res.sendFile(__dirname + "/public/index2.html");
 		else if (det == "news") res.sendFile(__dirname + "/public/news.html");
 		else if (det == "subscribe") res.sendFile(__dirname + "/public/subscribe.html");
 		else if (det == "trasparency") res.sendFile(__dirname + "/public/trasparency.html");
@@ -104,6 +104,9 @@ app.get('/news/:det', function(req,res)
 
 app.post('/form_articolo', upload.array('allegati'), function (req, res) {
 	var titolo = req.body.titolo;
+	var sottotitolo = req.body.sottotitolo;
+	var autore = req.body.autore;
+	var fonte = req.body.fonte;
 	var orig = './articoli/';
 	var nameFold = parseInt(Date.now()).toString();
 	var dest = './articoli/' + nameFold + '/';
@@ -126,8 +129,8 @@ app.post('/form_articolo', upload.array('allegati'), function (req, res) {
 
 	var command = 'python3 ./utility/wordTohtml.py ' + dest + fileDoc[0] + ' ' + dest + 'page.txt'
 	exec(command);
-	var query = "INSERT INTO articoli(titolo, cartella) VALUES(?, ?)";
-	dbconn.query(query, [titolo, nameFold]); //posso inserire anche l'html dell'articolo nel db
+	var query = "INSERT INTO articoli(titolo, cartella, sottotitolo, autore, fonti) VALUES(?, ?, ?, ?, ?)";
+	dbconn.query(query, [titolo, nameFold, sottotitolo, autore, fonte]); //posso inserire anche l'html dell'articolo nel db
 
 
 	dbconn.query('SELECT nome, email FROM newsletter', function (err, rows, fields) {

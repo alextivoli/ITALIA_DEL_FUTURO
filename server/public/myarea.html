@@ -92,7 +92,13 @@
 
     <form action="/form_articolo" id="creaArticolo" method="post" enctype="multipart/form-data">
         <label for="titolo">Titolo articolo:</label>
-        <input type="text" id="titolo" name="titolo" required>
+        <input type="text" id="titolo" name="titolo" size="40" required>
+        <br>
+		<input type="text" id="sottotitolo" name="sottotitolo" size="60" value="">
+        <br>
+		<input type="text" id="autore" name="autore" size="40" required>
+        <br>
+		<input type="text" id="fonte" name="fonte" size="40" value="">
         <br>
         <label for="allegati">Allega i file:</label>
         <input type="file" id="allegati" name="allegati" accept=".doc, .docx, .jpg, .png, .jpeg" multiple>
