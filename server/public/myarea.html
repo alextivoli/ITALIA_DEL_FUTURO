@@ -15,7 +15,9 @@
 			var files = fileInput.files;
 			var allowedTypes = ['image/jpeg','image/png','image/x-png','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
 			var allowedTypesDoc = ['application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+			var allowedTypesImg = ['image/jpeg','image/png','image/x-png'];
 			var docFile = 0;
+			var imgFile = 0;
 			
 			if (files.length === 0)
 			{
@@ -31,6 +33,11 @@
 					docFile = docFile+1;
 				}
 				
+				if (allowedTypesImg.includes(file.type))
+				{
+					imgFile = imgFile+1;
+				}
+				
 				if (!allowedTypes.includes(file.type))
 				{
 					fileError.textContent = 'Tipo di documento non valido. Selezionare: JPEG, PNG, JPG, DOC, DOCX.';
@@ -41,6 +48,12 @@
 			if (docFile!=1)
 			{
 				fileError.textContent = 'Ci deve essere almeno e solo un file DOC o DOCX.';
+				return;
+			}
+			
+			if (imgFile<=0)
+			{
+				fileError.textContent = 'Devi caricare almeno un immagine.';
 				return;
 			}
 			
