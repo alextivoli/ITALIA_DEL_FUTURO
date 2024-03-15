@@ -58,8 +58,11 @@
 		
 		function displayNews()
 		{
-			var urlParts = window.location.href.split('/');
+			var url = window.location.href.trim();
+			if (url[url.length - 1] == '/') {url = url.slice(0, -1);}
+			var urlParts = url.split('/');
 			var idNews = urlParts[urlParts.length - 1];
+			
 			$.ajax({
 				url: '/requests',
                 type: 'POST',
