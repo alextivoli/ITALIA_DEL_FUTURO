@@ -143,7 +143,7 @@ app.post('/form_articolo', upload.array('allegati'), function (req, res) {
 			from: '"Italia del Futuro" <noreply@italiadelfuturo.it>',
 			bcc: bccList,
 			subject: 'IDF informa',
-			html: '<p>Ti informiamo del nuovo articolo!</p><br><p>Puoi vederlo cliccando <a href="https://italiadelfuturo.it/news/'+ nameFold +'/">qui</a>!</p>',
+			html: '<p>Ti informiamo del nuovo articolo!</p><br><p>Puoi vederlo cliccando <a href="https://italiadelfuturo.it/news/'+ nameFold +'">qui</a>!</p>',
 		};
 
 		transporter.sendMail(mailOptions, function (error, info) {
@@ -279,7 +279,7 @@ app.post('/requests', function (req, res) {
 			dbconn.query(query, function (err, rows, fields)
 			{
 				const directoryPath = './articoli/' + rows[0].cartella + '/';
-				const images = fs.readdirSync(directoryPath).filter(file => {return /\.(png|jpg|jpeg)$/.test(file);});
+				const images = fs.readdirSync(directoryPath).filter(file => {return /\.(png|jpg|jpeg|PNG|JPG|JPEG)$/.test(file);});
 				
 				var html = "<h1 class='display-4 text-color-black'>" + rows[0].titolo + "</h1><p class='lead text-color-black'>!!</p>";
 				html += "<img src='" + directoryPath + images[0] + "' class='img-fluid max-height-img' alt='Immagine " + rows[0].titolo + "'><a href='/news/"+rows[0].cartella+"' class='btn btn-primary' style='margin: 1%'>Leggi di più</a><hr style='color: black;' width='100%'>";
@@ -305,7 +305,7 @@ app.post('/requests', function (req, res) {
 					for (var i = 0; i < rows.length; i++)
 					{
 						const directoryPath = './articoli/' + rows[i].cartella + '/';
-						const images = fs.readdirSync(directoryPath).filter(file => {return /\.(png|jpg|jpeg)$/.test(file);});
+						const images = fs.readdirSync(directoryPath).filter(file => {return /\.(png|jpg|jpeg|PNG|JPG|JPEG)$/.test(file);});
 						
 						html += "<div class='col-md-4 mt-2'><div class='card'>";
 						var pathfile = directoryPath + "page.txt";
