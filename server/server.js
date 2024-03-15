@@ -285,7 +285,7 @@ app.post('/requests', function (req, res) {
 				html += "<img src='" + directoryPath + images[0] + "' class='img-fluid max-height-img' alt='Immagine " + rows[0].titolo + "'><a href='/news/"+rows[0].cartella+"' class='btn btn-primary' style='margin: 1%'>Leggi di più</a><hr style='color: black;' width='100%'>";
 				var pathfile = directoryPath + "page.txt";
 				var page = fs.readFileSync(pathfile);
-				page = page.toString().substring(0, 150);
+				page = page.toString().substring(0, 150) + "...";
 				html = html.replace("!!", page);
 				res.send(html);
 			});
@@ -313,7 +313,7 @@ app.post('/requests', function (req, res) {
 						html += "<h5 class='card-title'>" + rows[i].titolo + "</h5>";
 						html += "<p class='card-text text-color-black'>!!</p> <a href='/news/"+rows[i].cartella+"' class='btn btn-primary'>Leggi di più</a></div></div></div>";
 						var page = fs.readFileSync(pathfile);
-						page = page.toString().substring(0, 150);
+						page = page.toString().substring(0, 150) + "...";
 						html = html.replace("!!", page);
 					}
 					res.send(html);
