@@ -206,7 +206,7 @@
                     key="SUBSCRIBE"></a></li>
         </ul>
 
-        <div class='hero-contact'>
+        <div class='hero-contact' id="frame_contact">
             <div class='hero__content reveal caption container' id='frame_1'>
                 <div class="row d-flex justify-content-center">
                     <h1 class="lang d-flex justify-content-center" key="INFOCONTACT"></h1>
@@ -446,9 +446,12 @@
                 const nav = document.getElementById('nav-home');
 
                 const frame_1 = document.getElementById('frame_1');
-
+                const frame_contact = document.getElementById('frame_contact');
                 frame_1.style.animation = ' nav_comparse 2s ';
                 frame_1.style.opacity = '1';
+
+                frame_contact.style.animation = ' nav_comparse 2s ';
+                frame_contact.style.opacity = '1';
 
                 nav.style.animation = ' nav_comparse 2s ';
                 nav.style.opacity = '1';
