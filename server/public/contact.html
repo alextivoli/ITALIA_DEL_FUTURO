@@ -206,7 +206,7 @@
                     key="SUBSCRIBE"></a></li>
         </ul>
 
-        <div class='hero-contact' id="frame_contact">
+        <div class='hero-contact' >
             <div class='hero__content reveal caption container' id='frame_1'>
                 <div class="row d-flex justify-content-center">
                     <h1 class="lang d-flex justify-content-center" key="INFOCONTACT"></h1>
@@ -241,7 +241,7 @@
             </div>
         </div>
         
-        <div class="content-newsletter">
+        <div class="content-newsletter" id="frame_newsletter">
             <div class="container mt-3 mb-3">
                 <div class="row justify-content-center">
                     <div class="col-md-6" id="newsletterForm">
@@ -279,7 +279,7 @@
         </div>
 
 
-        <div class="content-contact ">
+        <div class="content-contact " id="frame_contact">
             <div class="row mb-4" id="slideForm">
                 <h1 class="text-center mb-4 lang" key="CONTACT"></h1>
                 <div class="container slide-form d-flex justify-content-center ">
@@ -447,8 +447,14 @@
 
                 const frame_1 = document.getElementById('frame_1');
                 const frame_contact = document.getElementById('frame_contact');
+                const frame_newsletter = document.getElementById('frame_newsletter');
+
                 frame_1.style.animation = ' nav_comparse 2s ';
                 frame_1.style.opacity = '1';
+
+                frame_newsletter.style.animation = ' nav_comparse 2s ';
+                frame_newsletter.style.opacity = '1';
+
 
                 frame_contact.style.animation = ' nav_comparse 2s ';
                 frame_contact.style.opacity = '1';
