@@ -284,10 +284,10 @@ app.post('/requests', function (req, res) {
 				const directoryPath = './articoli/' + rows[0].cartella + '/';
 				const images = fs.readdirSync(directoryPath).filter(file => {return /\.(png|jpg|jpeg|PNG|JPG|JPEG)$/.test(file);});
 				
-				var html = "<div class='card'>"
-				html += "<img src='" + directoryPath + images[0] + "' class='img-fluid' style='height: 100%, width:100%' alt='Immagine " + rows[0].titolo + "'>"
+				 
+				var html = "<img src='" + directoryPath + images[0] + "' class='img-fluid' style='height: 100%, width:100%' alt='Immagine " + rows[0].titolo + "'>"
 				html += "<h1 class='display-4 text-color-black'>" + rows[0].titolo + "</h1><p class='lead text-color-black'>!!</p>";
-				html += "<hr style='color: black;' width='100%'></div>";
+				html += "<hr style='color: black;' width='100%'>";
 				var pathfile = directoryPath + "page.txt";
 				var page = fs.readFileSync(pathfile);
 				page = page.toString().substring(0, 150) + "...";
