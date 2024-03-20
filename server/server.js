@@ -37,7 +37,7 @@ app.use("/css", express.static(path.join(__dirname, 'css')));
 app.use("/utility", express.static(path.join(__dirname, 'utility')));
 app.use("/flags", express.static(path.join(__dirname, 'flags')));
 app.use("/articoli", express.static(path.join(__dirname, 'articoli')));
-app.use("/", express.static(path.join(__dirname, 'public')));
+//app.use("/", express.static(path.join(__dirname, 'public')));
 
 const server = https.createServer(options, app);
 dbconn.connect();
@@ -77,7 +77,7 @@ app.use('/', function (req, res, next)
 	next();
 });
 
-//app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'public')));
 
 app.get('/:det', function (req, res)
 {
