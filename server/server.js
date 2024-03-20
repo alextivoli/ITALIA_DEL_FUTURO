@@ -59,8 +59,10 @@ const transporter = nodemailer.createTransport(
 //res.sendFile(indexFile, { root: __dirname + '/public' });
 app.use(function(req, res, next)
 {
+	console.log("1");
 	if (req.headers.host.startsWith('www.'))
 	{
+		console.log("2");
 		const nonWwwUrl = 'https://' + req.headers.host.slice(4) + req.originalUrl;
 		res.redirect(nonWwwUrl);
 	}
@@ -68,14 +70,18 @@ app.use(function(req, res, next)
 });
 
 
-app.use('/', function (req, res, next) {
+app.use('/', function (req, res, next) 
+{
+	console.log("3");
 	if (req.url == "/") res.redirect('https://' + req.headers.host + "/home");
 	next();
 });
 
 //app.use('/', express.static(path.join(__dirname, 'public')));
 
-app.get('/:det', function (req, res) {
+app.get('/:det', function (req, res)
+{
+	console.log(4);
 	var det = req.params.det;
 	var host = req.headers.host;
 	if (host == domains[0]) {
