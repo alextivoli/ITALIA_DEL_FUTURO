@@ -37,6 +37,7 @@ app.use("/css", express.static(path.join(__dirname, 'css')));
 app.use("/utility", express.static(path.join(__dirname, 'utility')));
 app.use("/flags", express.static(path.join(__dirname, 'flags')));
 app.use("/articoli", express.static(path.join(__dirname, 'articoli')));
+app.use("/", express.static(path.join(__dirname, 'public')));
 
 const server = https.createServer(options, app);
 dbconn.connect();
@@ -56,13 +57,23 @@ const transporter = nodemailer.createTransport(
 //---------------------------------------------------------------------------------------------------------------
 
 //res.sendFile(indexFile, { root: __dirname + '/public' });
+app.use(function(req, res, next)
+{
+	if (req.headers.host.startsWith('www.'))
+	{
+		const nonWwwUrl = 'https://' + req.headers.host.slice(4) + req.originalUrl;
+		res.redirect(nonWwwUrl);
+	}
+	next();
+});
+
 
 app.use('/', function (req, res, next) {
 	if (req.url == "/") res.redirect('https://' + req.headers.host + "/home");
 	next();
 });
 
-app.use('/', express.static(path.join(__dirname, 'public')));
+//app.use('/', express.static(path.join(__dirname, 'public')));
 
 app.get('/:det', function (req, res) {
 	var det = req.params.det;
