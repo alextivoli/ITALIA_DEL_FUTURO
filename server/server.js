@@ -64,7 +64,7 @@ app.use(function(req, res, next)
 	{
 		console.log("2");
 		const nonWwwUrl = 'https://' + req.headers.host.slice(4) + req.originalUrl;
-		res.redirect(nonWwwUrl);
+		return res.redirect(nonWwwUrl);
 	}
 	next();
 });
