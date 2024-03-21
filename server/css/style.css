@@ -516,6 +516,12 @@ a {
   transform: translateY(0);
 }
 
+/* TEXT */
+
+.title_news{
+  font-size: large;
+}
+
 
 
 
