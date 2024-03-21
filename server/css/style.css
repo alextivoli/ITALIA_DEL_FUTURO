@@ -123,7 +123,7 @@ body::-webkit-scrollbar {
   min-height: 100%;
   z-index: 1;
   position: relative;
-  margin-top: 10vh;
+  margin-top: 20vh;
 }
 
 .hero__content h1,
@@ -519,7 +519,7 @@ a {
 /* TEXT */
 
 .title_news{
-  font-size: 20vw;
+  font-size: 5vw;
 }
 
 
