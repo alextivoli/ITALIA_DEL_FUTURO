@@ -481,6 +481,41 @@ a {
 }
 
 
+/* MENU MOBILE */
+
+.hamburger {
+  position: fixed;
+  z-index: 100;
+  top: 0.75rem;
+  left: 1rem;
+  border: black solid 1px;
+  cursor: pointer;
+  color: #c0c0c0;
+}
+
+.closeIcon {
+  display: none;
+}
+
+.menu {
+  position: fixed;
+  transform: translateY(-100%);
+  transition: transform 0.2s;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  list-style: none;
+  padding-top: 4rem;
+}
+
+.showMenu {
+  transform: translateY(0);
+}
+
 
 
 
@@ -1173,82 +1208,11 @@ background-size: contain; */
 
 
 
-.hamburger {
-  position: fixed;
-  z-index: 100;
-  top: 0.75rem;
-  left: 1rem;
-  border: black solid 1px;
-  cursor: pointer;
-  color: #c0c0c0;
-}
-
-.closeIcon {
-  display: none;
-}
-
-.menu {
-  position: fixed;
-  transform: translateY(-100%);
-  transition: transform 0.2s;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 99;
-  background: black;
-  color: white;
-  list-style: none;
-  padding-top: 4rem;
-}
-
-.showMenu {
-  transform: translateY(0);
-}
 
 
-.slider {
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-}
 
-.slider .slide {
-  position: absolute;
-  top: 5vh;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  animation: slider 25s infinite;
-}
 
-.slider .slide:nth-child(1) {
-  background-image: url('../img/one_love/AFPH0124.jpg');
-  animation-delay: 0s;
-}
 
-.slider .slide:nth-child(2) {
-  background-image: url('../img/one_love/AFPH0011.jpg');
-  animation-delay: -5s;
-}
-
-.slider .slide:nth-child(3) {
-  background-image: url('../img/one_love/AFPH0132.jpg');
-  animation-delay: -10s;
-}
-
-.slider .slide:nth-child(4) {
-  background-image: url('../img/one_love/AFPH2597-2.jpg');
-  animation-delay: -15s;
-}
-
-.slider .slide:nth-child(5) {
-  background-image: url('../img/one_love/AFPH0124.jpg');
-  animation-delay: -20s;
-}
 
 
 @keyframes slider {
@@ -2065,7 +2029,7 @@ background-size: contain; */
   .menu {
     margin-top: inherit;
     height: 100vh;
-    background: #212529;
+    background: #ffffff;
   }
 
   .form{
