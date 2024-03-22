@@ -523,7 +523,7 @@ a {
 /* TEXT */
 
 h1 {
-  font-size: 5em;  /* Base font size for responsiveness */
+  font-size: 4em;  /* Base font size for responsiveness */
   margin: 1rem 0;  /* Margin for spacing */
   text-align: center;  /* Center align the title */
 }
