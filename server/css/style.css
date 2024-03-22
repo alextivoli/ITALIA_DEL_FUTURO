@@ -206,17 +206,59 @@ body::-webkit-scrollbar {
 
 /* ! Content-page-trasparency */
 
-.content-page-trasparency{
-  
+.content-page-trasparency {
   position: relative;
-  height: 100vh;
-  display: grid;
-  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-size: cover;
   overflow: hidden;
   padding: 5vw;
 }
+
+.tab-content {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.tab-pane {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+@media (min-width: 576px) {
+  .content-page-trasparency {
+    padding: 5vw 15vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .content-page-trasparency {
+    padding: 5vh 20vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .content-page-trasparency {
+    padding: 5vh 25vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content-page-trasparency {
+    padding: 5vh 30vw;
+  }
+}
+
 
 /* ! Content-page-segretariat */
 
