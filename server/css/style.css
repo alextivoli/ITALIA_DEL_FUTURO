@@ -385,9 +385,6 @@ footer {
   font-weight: 400;
 }
 
-.text-card-title{
-
-}
 
 /* ! Loading-screen */
 
@@ -525,8 +522,10 @@ a {
 
 /* TEXT */
 
-.title_news{
-  font-size: 5vw;
+h1 {
+  font-size: 1.5rem;  /* Base font size for responsiveness */
+  margin: 1rem 0;  /* Margin for spacing */
+  text-align: center;  /* Center align the title */
 }
 
 
