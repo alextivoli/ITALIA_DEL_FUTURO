@@ -253,11 +253,7 @@ body::-webkit-scrollbar {
   }
 }
 
-@media (min-width: 1200px) {
-  .content-page-trasparency {
-    padding: 5vh 30vw;
-  }
-}
+
 
 
 /* ! Content-page-segretariat */
