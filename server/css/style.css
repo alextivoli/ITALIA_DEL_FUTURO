@@ -428,6 +428,7 @@ footer {
 }
 
 
+
 /* ! Loading-screen */
 
 #loading_screen {
@@ -713,6 +714,10 @@ h1 {
 
   .slide-form {
     width: 90vw;
+  }
+
+  .title_page{
+    font-size: 1.5em;
   }
 
 }
