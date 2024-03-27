@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Politico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nome del Politico</h1>
+    </header>
+    <nav>
+        <a href="#biografia">Biografia</a>
+        <a href="#contatti">Contatti</a>
+    </nav>
+    <div class="container">
+        <section id="biografia">
+            <h2>Biografia</h2>
+            <p> Davide Nostrini, nato il 9 dicembre 2000, sotto l'ombra della Ghirlandina, ha radici profonde nella città di Maranello. Fin dalla giovane età, ha manifestato un forte interesse per la politica, immergendosi con entusiasmo nelle dinamiche scolastiche. Nel 2019, all'età di diciotto anni, ha assunto il ruolo di consigliere comunale, guidando una lista civica da lui fondata insieme a un gruppo di amici. Il suo impegno civico è diventato una bandiera personale, una missione che lo ha portato a fondare l'associazione politica "Italia del Futuro", di cui attualmente ricopre la carica di presidente.
+                Nonostante la sua attività politica, Davide Nostrini è anche impegnato negli studi. È laureato in Biotecnologie Mediche e attualmente è laureando in economia aziendale. Allo stesso tempo, svolge il ruolo di responsabile commerciale in un'azienda informatica e di direttore di una cooperativa sociale.
+                Fuori dagli impegni lavorativi e politici, Davide è un appassionato tifoso della Ferrari. Ama anche cucinare e fare lunghe camminate in montagna, trovando nel contatto con la natura un momento di riflessione e relax.</p>
+        </section>
+        <section id="contatti">
+            <h2>Contatti</h2>
+            <form action="#" method="post">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Messaggio:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <input type="submit" value="Invia">
+            </form>
+        </section>
+    </div>
+</body>
+</html>
