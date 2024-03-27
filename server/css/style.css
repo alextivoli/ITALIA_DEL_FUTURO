@@ -168,6 +168,7 @@ body::-webkit-scrollbar {
   background-size: cover;
   overflow: hidden;
   background-color: #2ca9e1;
+  justify-content: center;
 
 }
 
@@ -304,6 +305,10 @@ body::-webkit-scrollbar {
 #slide_animated_form {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
+}
+
+form {
+  width: 100%
 }
 
 
