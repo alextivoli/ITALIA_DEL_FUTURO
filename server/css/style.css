@@ -306,10 +306,6 @@ body::-webkit-scrollbar {
   transition: opacity 0.5s ease-in-out;
 }
 
-form {
-  width: 35vw;
-}
-
 
 #confirmation_message {
   display: none;
