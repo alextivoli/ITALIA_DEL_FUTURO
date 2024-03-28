@@ -20,7 +20,7 @@ const options = { key: fs.readFileSync("/etc/letsencrypt/live/italiadelfuturo.it
 const dbconn = mysql.createConnection({ host: 'localhost', user: 'root', password: 'Idfdn2023', database: 'idf' });
 //const storage = multer.diskStorage({destination: (req, file, cb) => {const percorso = "./articoli/" + parseInt(Date.now()).toString() + "/"; fs.mkdirSync(percorso,{recursive:true}); cb(null, percorso);},filename: (req, file, cb) => {cb(null, file.originalname);}});
 const storage = multer.diskStorage({ destination: (req, file, cb) => { const percorso = "./articoli/"; cb(null, percorso); }, filename: (req, file, cb) => { cb(null, file.originalname); } });
-const mailconn = nodemailer.createTransport({ host: "smtps.aruba.it", auth: { user: 'noreply@italiadelfuturo.it', pass: 'Idfdn2023' }, port: 465 });
+const mailconn = nodemailer.createTransport({ host: "smtps.aruba.it", auth: { user: 'noreply@italiadelfuturo.it', pass: 'Idfdn2023!' }, port: 465 });
 const domains = ["italiadelfuturo.it", "davidenostrini.italiadelfuturo.it"];
 //const redisclient = redis.createClient();
 const defaultLang = "it-it"
